@@ -20,7 +20,7 @@ async function loadMongoDb(){
 loadMongoDb()
 
 
-
+//GET DATA
 async function getData() {
   
   let collection = mongoResult.db("GoJobber").collection("Users");
@@ -28,6 +28,8 @@ async function getData() {
   return response;
 }
 
+
+//POST DATA
 async function postData(user) {
   let collection = mongoResult.db("GoJobber").collection("Users");
   collection.insertOne(user, function (err, res) {
