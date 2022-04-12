@@ -1,5 +1,12 @@
 import React from 'react';
 import '../App.css';
+import UseAnimations from "react-useanimations";
+import facebook from 'react-useanimations/lib/facebook'
+import twitter from 'react-useanimations/lib/twitter'
+import instagram from 'react-useanimations/lib/instagram'
+import linkedin from 'react-useanimations/lib/linkedin'
+import {Row,Col} from "react-bootstrap"
+
 const Contact = () => {
     return (
         <div className='Container'>
@@ -29,7 +36,26 @@ const Contact = () => {
                     </div>
                     <button type="submit" className="btn BTN">Submit</button>
                 </form>
+                <div className='Contact-Icons-div'>
+                <Row className='Contact-Socialmedia'>
+            <h2 style={{marginBottom:"5%"}}>Social Media</h2>
+            <Col>
+          <UseAnimations strokeColor='#ff9902'  speed={2} animation={facebook} size={56}  />
+          </Col>
+          <Col> 
+          <UseAnimations strokeColor='#ff9902'  speed={2} animation={instagram} size={56}  />
+          </Col> 
+          <Col>
+          <UseAnimations strokeColor='#ff9902'  speed={2} animation={twitter} size={56}  />
+          </Col>
+          <Col>
+          <UseAnimations strokeColor='#ff9902'  speed={2} animation={linkedin} size={56}  />
+          </Col>
+          
+          </Row>
+          </div>
             </div>
+           
         </div>
     )
 }

@@ -18,6 +18,8 @@ import Contact from "../Pages/Contact";
 import JobSearch from "../Pages/JobSearch";
 import Categories from "../Pages/Categories";
 import JobPost from "../Pages/JobPost";
+import JobList from "../Pages/JobList";
+
 
 
 
@@ -36,6 +38,8 @@ class AppRouter extends Component {
           <Route exact path="/JobSearch" component={JobSearch} />
           <Route exact path="/Categories" component={Categories} />
           <Route exact path="/JobPost" component={JobPost} />
+          <Route exact path="/AllJobs" component={JobList} />
+
 
 
 

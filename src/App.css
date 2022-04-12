@@ -15,7 +15,7 @@ header{
   width: 100%;
   background: url('./Assests/bg.jpg');
   background-position: center;
-  height: 520px;
+  height: 650px;
   /* margin-top: 70px; */
   background-size: cover;
   background-repeat: no-repeat;
@@ -75,6 +75,7 @@ header{
   background-color: var(--goldColor);
   padding: 20px;
   justify-content: space-between !important;
+  /* border-radius: 2%; */
 }
 
 .form-select{
@@ -255,20 +256,27 @@ li:hover{
 }
 
 @media only screen and (max-width: 600px) {
+  .HeaderText h1{
+
+    font-size: 40px !important;
+  }
+  header{
+    height: 380px !important;
+  }
   .JobCard{
-    width: 80% !important;
+    width: 90% !important;
     margin-bottom: 5% !important;
 
   }
   .Job-card-btn{
-    height:28% !important;
+    height:30% !important;
     width: 65%;
     margin: 10px;
     font-size: small !important;
   
   }
   .Job-time-card-btn{
-    height:28% !important;
+    height:36% !important;
     width: 65%;
     margin: 10px;
     font-size: small !important;
@@ -338,6 +346,34 @@ li:hover{
   margin-bottom: 5px !important;
 
 }
+
+.contact_form{
+  margin: 3% 20% 3% 20% !important;
+
+}
+
+.BTN{
+  width: 40% !important;
+}
+
+
+
+
+.Contact-Socialmedia >.col{
+  /* margin: 2px !important; */
+  /* padding: 0% !important; */
+  /* max-width: 65% !important; */
+  width: 100% !important;
+  margin-left: 0% !important;
+  
+  
+}
+
+.Contact-Icons-div{
+  /* text-align: -webkit-center ; */
+  margin-right: 15%;
+}
+
 
 }
 
@@ -573,6 +609,7 @@ border: 2px solid blue;
   font-weight:540;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   
+  
 }
 
 
@@ -641,4 +678,45 @@ border: 2px solid blue;
   background-repeat: no-repeat;
   background-size: cover;
   padding: 0.005% 0% 1% 0%;
+}
+.Contact-Socialmedia{
+  margin-top:8% !important;
+  /* width: 50% !important; */
+  margin-bottom: 10% !important;
+  /* width: 50% !important; */
+  /* text-align: -webkit-center; */
+  /* margin-left: 30% !important; */
+
+
+
+  
+}
+
+.Contact-Socialmedia >h2{
+  text-align: center;
+  margin-left: -3%;
+  color: #ff9902;
+}
+
+.Contact-Socialmedia >.col{
+  max-width: fit-content !important;
+  margin-left: 15%;
+}
+
+
+
+.Contact-Icons-div{
+  text-align: -webkit-center ;
+}
+
+.pagination{
+  justify-content: center !important;
+  -webkit-text-fill-color: #ff9902;
+  
+}
+
+.page-item.active .page-link {
+
+  background-color:#142050 !important;
+  border-color: #142050 !important;
 }

@@ -20,7 +20,7 @@ function Home() {
       <JobCard/>
       <JobCard/>
       <div className='see-more-div'>
-      <Button  className='see-more-btn' variant="flat">
+      <Button onClick={()=>{window.location.replace("/AllJobs")}}  className='see-more-btn' variant="flat">
     More Jobs
   </Button>
       </div>

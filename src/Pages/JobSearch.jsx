@@ -35,7 +35,7 @@ function JobSearch() {
                 </Form.Group>
 
                 <Form.Group as={Col} sm={10} md={3}>
-                  <Button className="search-btn" variant="dark">Dark</Button>
+                  <Button className="search-btn" style={{backgroundColor:"rgb(2, 35, 95)"}}>Dark</Button>
                 </Form.Group>
 
               </Row>
