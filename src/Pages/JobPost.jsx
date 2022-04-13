@@ -4,6 +4,19 @@ import {Form,Button,Row,Col} from "react-bootstrap"
 
 const JobPost = () => {
 
+    const [jobTitle,setJobTitle] = useState("")
+    const [jobDescription,setJobDescription] = useState("")
+    const [jobLocation,setJobLocation] = useState("")
+    const [jobTimings,setJobTimings] = useState("")
+    const [jobType,setJobType] = useState("")
+    const [jobCategory,setJobCategory] = useState("")
+    const [jobRequirements,setJobRequirements] = useState("")
+    const [jobVacancies,setJobVacancies] = useState("")
+    const [companyName,setCompanyName] = useState("")
+    const [companyDescription,setCompanyDescription] = useState("")
+    const [companyLocation,setCompanyLocation] = useState("")
+    const [companyWebsite,setCompanyWebsite] = useState("")
+    const [companyLogo,setCompanyLogo] = useState("")
     const [fieldSize,setFieldSize] = useState(60)
 
     useEffect(()=>{
@@ -13,6 +26,15 @@ const JobPost = () => {
         }
 
     },[window.screen.width])
+
+
+    const SubmitJob=()=>{
+        
+        // if(jobTitle != "" && jobTitle != "" && jobTitle != "" && jobTitle != "" && jobTitle != ""
+        // && jobTitle != "" && jobTitle != "" && jobTitle != "" && jobTitle != "" && jobTitle != ""
+        // && jobTitle != "" && jobTitle != "" && jobTitle != "" && jobTitle != "" )
+
+    }
 
     return (
         <div className='Container job-post'>
@@ -38,7 +60,7 @@ const JobPost = () => {
             JOB TITLE
       </Col>
       <Col   sm={9}>
-      <input size={fieldSize} type="text" placeholder='Enter job title' />
+      <input required onChange={(e)=>setJobTitle(e.target.value)} size={fieldSize} type="text" placeholder='Enter job title' />
       </Col>
   </Row>
 
@@ -47,7 +69,7 @@ const JobPost = () => {
             JOB DESCRIPTION
       </Col>
       <Col sm={9}>
-      <textarea rows={4} cols={30} type="text" placeholder='Enter job description' />
+      <textarea required  onChange={(e)=>setJobDescription(e.target.value)} rows={4} cols={30} type="text" placeholder='Enter job description' />
       </Col>
   </Row>
 
@@ -56,7 +78,7 @@ const JobPost = () => {
             JOB LOCATION
       </Col>
       <Col sm={9}>
-      <input size={fieldSize} type="text" placeholder='Enter job location' />
+      <input required  onChange={(e)=>setJobLocation(e.target.value)} size={fieldSize} type="text" placeholder='Enter job location' />
       </Col>
   </Row>
 
@@ -65,7 +87,7 @@ const JobPost = () => {
             JOB TIMINGS
       </Col>
       <Col sm={9}>
-      <input size={fieldSize} type="text" placeholder='Enter job timings' />
+      <input required  onChange={(e)=>setJobTimings(e.target.value)} size={fieldSize} type="text" placeholder='Enter job timings' />
       </Col>
   </Row>
 
@@ -75,7 +97,7 @@ const JobPost = () => {
             JOB TYPE
       </Col>
       <Col sm={9}>
-      <input size={fieldSize} type="text" placeholder='Enter job type' />
+      <input required  onChange={(e)=>setJobType(e.target.value)} size={fieldSize} type="text" placeholder='Enter job type' />
       </Col>
   </Row>
 
@@ -84,7 +106,7 @@ const JobPost = () => {
             JOB CATEGORY
       </Col>
       <Col sm={9}>
-      <select name="cars" id="cars">
+      <select required  onChange={(e)=>setJobCategory(e.target.value)} name="cars" id="cars">
   <option value="volvo">Volvo</option>
   <option value="saab">Saab</option>
   <option value="mercedes">Mercedes</option>
@@ -98,7 +120,7 @@ const JobPost = () => {
             JOB REQUIREMENTS
       </Col>
       <Col sm={9}>
-      <input size={fieldSize} type="text" placeholder='Enter job requirements' />
+      <input required  onChange={(e)=>setJobRequirements(e.target.value)} size={fieldSize} type="text" placeholder='Enter job requirements' />
       </Col>
   </Row>
 
@@ -107,7 +129,7 @@ const JobPost = () => {
             VACANCIES AVAILABLE
       </Col>
       <Col sm={9}>
-      <input size={fieldSize} type="number" placeholder='Enter no. of vacancies' />
+      <input required  onChange={(e)=>setJobVacancies(e.target.value)} size={fieldSize} type="number" placeholder='Enter no. of vacancies' />
       </Col>
   </Row>
 
@@ -120,7 +142,7 @@ const JobPost = () => {
             COMPANY NAME
       </Col>
       <Col sm={9}>
-      <input size={fieldSize} type="text" placeholder='Enter company name' />
+      <input required  onChange={(e)=>setCompanyName(e.target.value)} size={fieldSize} type="text" placeholder='Enter company name' />
       </Col>
   </Row>
 
@@ -129,7 +151,7 @@ const JobPost = () => {
             COMPANY DESCRIPTION
       </Col>
       <Col sm={9}>
-      <textarea rows={4} cols={30} type="text" placeholder='Enter company description' />
+      <textarea required  onChange={(e)=>setCompanyDescription(e.target.value)} rows={4} cols={30} type="text" placeholder='Enter company description' />
       </Col>
   </Row>
 
@@ -138,7 +160,7 @@ const JobPost = () => {
             COMPANY LOCATION
       </Col>
       <Col sm={9}>
-      <input size={fieldSize} type="text" placeholder='Enter company location' />
+      <input required  onChange={(e)=>setCompanyLocation(e.target.value)} size={fieldSize} type="text" placeholder='Enter company location' />
       </Col>
   </Row>
 
@@ -147,7 +169,7 @@ const JobPost = () => {
             COMPANY WEBSITE
       </Col>
       <Col sm={9}>
-      <input size={fieldSize} type="text" placeholder='https://' />
+      <input required  onChange={(e)=>setCompanyWebsite(e.target.value)} size={fieldSize} type="text" placeholder='https://' />
       </Col>
   </Row>
 
@@ -156,10 +178,10 @@ const JobPost = () => {
             COMPANY LOGO
       </Col>
       <Col sm={9}>
-      <input size={fieldSize} type="file" />
+      <input required  onChange={(e)=>setCompanyLogo(e.target.value)} size={fieldSize} type="file" />
       </Col>
   </Row>
-  <Button style={{backgroundColor:"#ff9902",height:"70%"}} variant="flat" type="submit">
+  <Button onClick={()=>SubmitJob()} type="submit" style={{backgroundColor:"#ff9902",height:"70%"}} variant="flat" >
     Submit
   </Button>
 </Form>

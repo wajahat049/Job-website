@@ -5,8 +5,9 @@ const { MongoClient, ServerApiVersion } = require("mongodb");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
-var mongoResult;
 
+
+var mongoResult;
 async function loadMongoDb(){
   const uri =
     "mongodb+srv://wajahat:wajju123@cluster0.0buc1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
@@ -22,7 +23,6 @@ loadMongoDb()
 
 //GET DATA
 async function getData() {
-  
   let collection = mongoResult.db("GoJobber").collection("Users");
   let response = await collection.find({}).toArray();
   return response;
@@ -51,7 +51,7 @@ app.post("/CreateUser", (req, res) => {
   postData(req.body);
 });
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8001;
 
 app.listen(PORT, () => {
   console.log(`Server started on Port ${PORT}`);
