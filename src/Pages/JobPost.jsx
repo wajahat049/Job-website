@@ -33,6 +33,19 @@ const JobPost = () => {
         // if(jobTitle != "" && jobTitle != "" && jobTitle != "" && jobTitle != "" && jobTitle != ""
         // && jobTitle != "" && jobTitle != "" && jobTitle != "" && jobTitle != "" && jobTitle != ""
         // && jobTitle != "" && jobTitle != "" && jobTitle != "" && jobTitle != "" )
+            // console.log(email, pass)
+            const requestOptions = {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ jobTitle, jobDescription,jobLocation,jobTimings,jobType,jobCategory,
+            jobRequirements,jobVacancies,companyName,companyDescription,companyLocation,companyWebsite,companyLogo
+            })
+            };
+            // setShow(true)
+            fetch('http://localhost:8000/Login', requestOptions)
+              .then(response => response.json())
+            //   .then(data => setMsg(data.message));
+        
 
     }
 
