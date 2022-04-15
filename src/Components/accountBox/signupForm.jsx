@@ -37,7 +37,7 @@ const [show, setShow] = useState(false);
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name,email,pass })
   };
-  fetch('http://localhost:8000/CreateUser', requestOptions)
+  fetch('http://localhost:8001/CreateUser', requestOptions)
   .then(response => response.json())
       .then(data => setMsg(data.message));
 

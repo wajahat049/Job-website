@@ -42,11 +42,9 @@ const JobPost = () => {
             })
             };
             // setShow(true)
-            fetch('http://localhost:8000/Login', requestOptions)
+            fetch('http://localhost:8001/PostJob', requestOptions)
               .then(response => response.json())
             //   .then(data => setMsg(data.message));
-        
-
     }
 
     return (
