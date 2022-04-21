@@ -28,23 +28,25 @@ const JobPost = () => {
     },[window.screen.width])
 
 
-    const SubmitJob=()=>{
-        
-        // if(jobTitle != "" && jobTitle != "" && jobTitle != "" && jobTitle != "" && jobTitle != ""
-        // && jobTitle != "" && jobTitle != "" && jobTitle != "" && jobTitle != "" && jobTitle != ""
-        // && jobTitle != "" && jobTitle != "" && jobTitle != "" && jobTitle != "" )
+    const SubmitJob=(event)=>{
+        event.preventdefault()
+        if(jobTitle != "" && jobDescription != "" && jobLocation != "" && jobTimings != "" && jobType != ""
+        && jobCategory != "" && jobRequirements != "" && jobVacancies != "" && companyName != "" && companyDescription != ""
+        && companyDescription != "" && companyDescription != "" && companyLogo != "" )
+        {
             // console.log(email, pass)
             const requestOptions = {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ jobTitle, jobDescription,jobLocation,jobTimings,jobType,jobCategory,
-            jobRequirements,jobVacancies,companyName,companyDescription,companyLocation,companyWebsite,companyLogo
+            jobRequirements,jobVacancies,companyName,companyDescription,companyDescription,companyDescription,companyLogo
             })
             };
             // setShow(true)
             fetch('http://localhost:8001/PostJob', requestOptions)
               .then(response => response.json())
             //   .then(data => setMsg(data.message));
+        }
     }
 
     return (

@@ -29,17 +29,17 @@ const Login = async (req, res) => {
   collection.findOne({ email: req.body.email }).then((user, err) => {
     if (user) {
       if (user.pass == req.body.pass) {
-        res.status(400).send({ message: "Successfully Login" });
+        res.status(400).send({ message: "Successfully Login",variant:"success" });
         console.log("Successfully Login")
       }
       else {
-        res.status(400).send({ message: "Incorrect Password" });
+        res.status(400).send({ message: "Incorrect Password",variant:"danger"  });
         console.log("Incorrect Password")
       }
       return;
     }
     else {
-      res.status(400).send({ message: "Incorrect Email" });
+      res.status(400).send({ message: "Incorrect Email",variant:"danger"  });
       console.log("Incorrect Email")
       return;
     }
@@ -60,13 +60,13 @@ const postData=async(req, res)=> {
   let collection = mongoResult.db("GoJobber").collection("Users");
   collection.findOne({ email: req.body.email }).then((user, err) => {
     if (user) {
-      res.status(400).send({ message: "Failed! Email has already exist" });
+      res.status(400).send({ message: "Failed! Email already exist",variant:"danger"  });
       console.log("Failed! Email has already exist")
     }
     else {
       collection.insertOne({email: req.body.email, pass: req.body.pass, name: req.body.name}, function (error, response) {
         if (err) throw err;
-        res.status(400).send({ message: "Successfully Signup" });
+        res.status(400).send({ message: "Successfully Signup",variant:"success"  });
       console.log("Successfully Signup")
       });
 
@@ -80,9 +80,9 @@ const postData=async(req, res)=> {
 //Job Post
 const postJob=async(req, res)=> {
     let collection = mongoResult.db("GoJobber").collection("Jobs");
-    collection.findOne({ title: req.body.job }).then((user, err) => {
+    collection.findOne({ jobTitle: req.body.jobTitle }).then((user, err) => {
       if (user) {
-        res.status(400).send({ message: "Failed! Job has already exist" });
+        res.status(400).send({ message: "Failed! Job already exist",variant:"danger"  });
         console.log("Failed! Job has already exist")
       }
       else {
@@ -92,7 +92,7 @@ const postJob=async(req, res)=> {
             companyDescription: req.body.companyDescription,companyLocation: req.body.companyLocation,companyWebsite: req.body.companyWebsite,
             companyLogo: req.body.companyLogo}, function (error, response) {
           if (err) throw err;
-          res.status(400).send({ message: "Successfully Post" });
+          res.status(400).send({ message: "Successfully Post",variant:"success"  });
         console.log("Successfully Post")
         });
   

@@ -22,10 +22,18 @@ export function LoginForm(props) {
 
   // For Error Message
   const [msg, setMsg] = useState("");
+  const [variant, setvariant] = useState("");
+
 
   // For Toast
   const [show, setShow] = useState(false);
 
+const save=(data)=>{
+  setMsg(data.message)
+  setvariant(data.variant)
+
+
+}
 
   const Submit = () => {
     console.log(email, pass)
@@ -37,7 +45,7 @@ export function LoginForm(props) {
     setShow(true)
     fetch('http://localhost:8001/Login', requestOptions)
       .then(response => response.json())
-      .then(data => setMsg(data.message));
+      .then(data =>save(data) );
 
   }
 
@@ -50,10 +58,16 @@ export function LoginForm(props) {
           <Input type="password" placeholder="Password" name="pass" onChange={(e) => setPass(e.target.value)} />
         </FormContainer>
         <Marginer direction="vertical" margin={10} />
+        
+          <Toast bg={variant}  onClose={() => setShow(false)} show={show} delay={2500} autohide>
+            <Toast.Body style={{fontSize:"14px",color:"white"}}>{msg}</Toast.Body>
+          </Toast>
+      
         <MutedLink href="#">Forget your password?</MutedLink>
         <Marginer direction="vertical" margin="1.6em" />
         <SubmitButton type="submit" onClick={() => Submit()}>Signin</SubmitButton>
         <Marginer direction="vertical" margin="1em" />
+        
         <MutedLink href="#">
           Don't have an accoun?{" "}
           <BoldLink href="#" onClick={switchToSignup}>
@@ -65,20 +79,7 @@ export function LoginForm(props) {
 
 
 
-      <Row className="toast_msg">
-        <Col xs={6}>
-          <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
-            <Toast.Header>
-              <img
-                src="holder.js/20x20?text=%20"
-                className="rounded me-2"
-                alt=""
-              />
-            </Toast.Header>
-            <Toast.Body>{msg}</Toast.Body>
-          </Toast>
-        </Col>
-      </Row>
+      
     </>
   );
 }
