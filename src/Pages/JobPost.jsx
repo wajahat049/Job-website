@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css'
 import {Form,Button,Row,Col} from "react-bootstrap"
-
+import { storage } from '../Config/FirebaseConfig';
+import { ref, getDownloadURL, uploadBytesResumable } from "@firebase/storage";
 const JobPost = () => {
 
     const [jobTitle,setJobTitle] = useState("")
@@ -35,14 +36,14 @@ const JobPost = () => {
         event.preventdefault()
         if(jobTitle != "" && jobDescription != "" && jobLocation != "" && jobTimings != "" && jobType != ""
         && jobCategory != "" && jobEducation != "" && jobExperience != "" && jobVacancies != "" && companyName != "" && companyDescription != ""
-        && companyDescription != "" && companyDescription != "" && companyLogo != "" )
+        && companyDescription != "" && companyDescription != "" && companyLogo != "" && companyLocation!="" && companyWebsite!="" )
         {
             // console.log(email, pass)
             const requestOptions = {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ jobTitle, jobDescription,jobLocation,jobTimings,jobType,jobCategory,
-                jobEducation,jobExperience,jobVacancies,companyName,companyDescription,companyDescription,companyDescription,companyLogo
+                jobEducation,jobExperience,jobVacancies,companyName,companyLocation,companyWebsite,companyDescription,companyLogo
             })
             };
             // setShow(true)
@@ -51,6 +52,36 @@ const JobPost = () => {
             //   .then(data => setMsg(data.message));
         }
     }
+
+const handleSubmit=(e)=>{
+    e.preventDefault()
+    const file = e.target.files[0]
+console.log(e.target.files[0])
+    if (!file) return;
+
+    const storageRef = ref(storage, `CompanyLogos/${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on("state_changed",
+      (snapshot) => {
+console.log("in progress")
+
+        const progress =
+          Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        // setProgresspercent(progress);
+      },
+      (error) => {
+        alert(error);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+console.log("URL",downloadURL)
+          setCompanyLogo(downloadURL)
+        });
+      }
+    );
+
+}
 
     return (
         <div className='Container job-post'>
@@ -94,7 +125,7 @@ const JobPost = () => {
             JOB LOCATION
       </Col>
       <Col sm={9}>
-      <select style={{padding:5}} required  onChange={(e)=>setJobLocation(e.target.value)} name="cars" id="cars">
+      <select className='Select' required  onChange={(e)=>setJobLocation(e.target.value)} name="cars" id="cars">
   <option value="Karachi">Karachi</option>
   <option value="Islamabad">Islamabad</option>
   <option value="Lahore">Lahore</option>
@@ -127,7 +158,7 @@ const JobPost = () => {
             JOB CATEGORY
       </Col>
       <Col sm={9}>
-      <select  required  onChange={(e)=>setJobCategory(e.target.value)} name="cars" id="cars">
+      <select className='Select'  required  onChange={(e)=>setJobCategory(e.target.value)} name="cars" id="cars">
   <option value="volvo">Engineer</option>
   <option value="saab">Computer Engineer</option>
   <option value="Doctor">Doctor</option>
@@ -160,7 +191,7 @@ const JobPost = () => {
             EDUCATION
       </Col>
       <Col sm={9}>
-      <select required  onChange={(e)=>setJobEducation(e.target.value)} name="cars" id="cars">
+      <select className='Select' required  onChange={(e)=>setJobEducation(e.target.value)} name="cars" id="cars">
   <option value="Matric Pass">Matric Pass</option>
   <option value="Intermediate Pass">Intermediate Pass</option>
   <option value="Undergraduate">Undergraduate</option>
@@ -176,8 +207,8 @@ const JobPost = () => {
             EXPERIENCE
       </Col>
       <Col sm={9}>
-      <select required  onChange={(e)=>setJobExperience(e.target.value)} name="cars" id="cars">
-  <option value="volvo">No Experience</option>
+      <select className='Select' required  onChange={(e)=>setJobExperience(e.target.value)} name="cars" id="cars">
+  <option value="No Experience">No Experience</option>
   <option value="less than a year">less than a year</option>
   <option value="more than a year">more than a year</option>
   <option value="more than 2 years">more than 2 years</option>
@@ -226,10 +257,15 @@ const JobPost = () => {
 
   <Row className='form-row'>
       <Col sm={3}>
-            COMPANY LOCATION
+            JOB LOCATION
       </Col>
       <Col sm={9}>
-      <input required  onChange={(e)=>setCompanyLocation(e.target.value)} size={fieldSize} type="text" placeholder='Enter company location' />
+      <select className='Select' required  onChange={(e)=>setCompanyLocation(e.target.value)} >
+  <option value="Karachi">Karachi</option>
+  <option value="Islamabad">Islamabad</option>
+  <option value="Lahore">Lahore</option>
+
+</select>
       </Col>
   </Row>
 
@@ -247,8 +283,9 @@ const JobPost = () => {
             COMPANY LOGO
       </Col>
       <Col sm={9}>
-      <input required  onChange={(e)=>setCompanyLogo(e.target.value)} size={fieldSize} type="file" />
+      <input required id="Logo"  onChange={(e)=>handleSubmit(e)} size={fieldSize} type="file" />
       </Col>
+      {/* <img src={companyLogo} alt="" srcset="" /> */}
   </Row>
   <Button onClick={()=>SubmitJob()} type="submit" style={{backgroundColor:"#ff9902",height:"70%"}} variant="flat" >
     Submit
