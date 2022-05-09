@@ -1,13 +1,42 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import '../App.css';
 import UseAnimations from "react-useanimations";
 import facebook from 'react-useanimations/lib/facebook'
 import twitter from 'react-useanimations/lib/twitter'
 import instagram from 'react-useanimations/lib/instagram'
 import linkedin from 'react-useanimations/lib/linkedin'
-import {Row,Col} from "react-bootstrap"
+import {Row,Col,Button} from "react-bootstrap"
 
 const Contact = () => {
+
+    const [filled,setFilled] = useState(false)
+
+
+    const SubmitContactForm=(event)=>{
+        event.preventDefault()
+        var name = document.getElementById("name").value
+        var email = document.getElementById("email").value
+        var message = document.getElementById("message").value
+console.log(name,email,message)
+if(name!="" && email !="" && message!=""){
+        fetch('http://localhost:8001/ContactForm', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({name,email,message})
+  })
+    .then(response => response.json())
+    .then(data => console.log(data)
+        ).then(
+setFilled(true)
+
+        ).then(document.getElementById("name").value="",
+        document.getElementById("email").value="",
+        document.getElementById("message").value=""
+        )
+
+    }
+    }
+
     return (
         <div className='Container'>
             {/* <header>
@@ -21,20 +50,26 @@ const Contact = () => {
             <div className='contact_bg'>
                 <h1 className='about-heading'>CONTACT US</h1>
             
-                <form className='contact_form' id="contact-form" method="POST">
+                <form className='contact_form'  >
                     <div className="form-group">
                         <label htmlFor="name">Name</label>
-                        <input type="text" className="form-control" />
-                    </div>
+                        <input required id='name' type="text" className="form-control" />
+                    </div> 
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Email address</label>
-                        <input type="email" className="form-control" aria-describedby="emailHelp" />
+                        <input  id='email' type="email" className="form-control" aria-describedby="emailHelp" required/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="message">Message</label>
-                        <textarea className="form-control" rows="5"></textarea>
+                        <textarea required id='message' className="form-control" rows="5"></textarea>
                     </div>
-                    <button type="submit" className="btn BTN">Submit</button>
+                    <Button type='submit' onClick={(e)=>SubmitContactForm(e)} className="btn BTN">
+                        {
+                            filled?<img width={35} height={30} src="https://www.freeiconspng.com/uploads/accept-tick-icon-12.png"/>
+:"Submit"
+                        }
+                    
+                    </Button>
                 </form>
                 <div className='Contact-Icons-div'>
                 <Row className='Contact-Socialmedia'>

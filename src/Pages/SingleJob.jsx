@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useEffect,useState} from 'react'
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -14,31 +15,39 @@ import {Container,Row,Col,Form,Button} from "react-bootstrap"
 import Header from "../Components/Header"
 
 export default function SingleJob() {
+  const [JOB,setJOB] = useState({})
+
+useEffect(()=>{
+setJOB(
+  JSON.parse(localStorage.getItem("JOB"))
+)
+},[])
+
   return (
     <>
     <Header/>
     <Container className="SingleJob">
       <Row  className="JobTitle-and-Button" >
         <Col xs={2} sm={2}  md={1} className="Job-Image">
-        <img className='Logo-Company'  src={"https://www.mintformations.co.uk/blog/wp-content/uploads/2020/05/shutterstock_583717939.jpg"} alt="company logo"/>
+        <img className='Logo-Company'  src={JOB.companyLogo} alt="company logo"/>
         </Col>
         <Col className="titleandsubtitles" xs={10} sm={10} md={7}>
           <Row><h2>
-            Job Title
+            {JOB.jobTitle}
             </h2></Row>
             <Row style={{width:"75%"}} >
           <Col > <MdLocationPin size={20} style={{marginRight:"2%"}}/>
-          Location
+          {JOB.jobLocation}
           </Col>
               
          
               <Col ><MdWork size={20} style={{marginRight:"2%"}}/>
-              Type of Work</Col>
+              {JOB.jobType}</Col>
              
                
           
           <Col ><MdAccessTimeFilled size={20} style={{marginRight:"2%"}}/>
-          Timing</Col>
+          {JOB.jobTimings}</Col>
             
         
          
@@ -59,7 +68,7 @@ export default function SingleJob() {
       </Row>
       <Row className="ImgandDetail">
         <Col sm={12} md={8} >
-        <img src="https://preview.colorlib.com/theme/careers/images/sq_img_1.jpg" alt="" />
+        <img src={"https://preview.colorlib.com/theme/careers/images/sq_img_1.jpg" }alt="" />
         
         </Col>
         <Col >
@@ -132,14 +141,10 @@ export default function SingleJob() {
           <h3><GiWhiteBook style={{marginRight:"1%"}}/>Education + Experience</h3>
           <ul>
             <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+              {JOB.jobEducation} 
               </li>
               <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-              </li> <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-              </li> <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+              {JOB.jobExperience} 
               </li>
           </ul>
         </div>

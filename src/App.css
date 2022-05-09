@@ -241,7 +241,7 @@ li:hover{
 .Job-card-btn{
   background-color:#ff9902;
   align-self:end;
-  height:30% !important;
+  height:25% !important;
   width: 40%;
   margin: 15px;
 
@@ -250,7 +250,7 @@ li:hover{
 .Job-time-card-btn{
   background-color:rgb(2, 35, 95) !important;
   align-self:end;
-  height:30% !important;
+  height:25% !important;
   width: 40%;
   margin: 15px;
 }
@@ -269,14 +269,14 @@ li:hover{
 
   }
   .Job-card-btn{
-    height:30% !important;
+    /* height:30% !important; */
     width: 65%;
     margin: 10px;
     font-size: small !important;
   
   }
   .Job-time-card-btn{
-    height:36% !important;
+    /* height:25% !important; */
     width: 65%;
     margin: 10px;
     font-size: small !important;
@@ -422,6 +422,7 @@ border: 2px solid blue;
 .Logo-Company{
   width: 100% !important;
   height: 100% !important;
+  margin-left: -10;
 }
 
 /* .titleandsubtitles .row .col{
@@ -647,8 +648,11 @@ border: 2px solid blue;
 }
 .contact_form{
   margin: 3% 35% 3% 35%;
-  border: 2px solid #ff9902;
+  border: 3px solid #ff9902;
   border-radius: 5%;
+  box-shadow: 23px 20px 18px -8px rgba(0,0,0,0.77);
+-webkit-box-shadow: 23px 20px 18px -8px rgba(0,0,0,0.77);
+-moz-box-shadow: 23px 20px 18px -8px rgba(0,0,0,0.77);
 
 }
 
@@ -674,9 +678,12 @@ border: 2px solid blue;
 }
 
 .contact_bg{
-  background-image: url("https://hawk-sense.com/assets/images/aboutus/contactus2.jpg");
+  /* background-image: url("https://i1.wp.com/orlandocabrera.com/wp-content/uploads/2013/12/contactform-background-32.jpg?ssl=1"); */
+  background-image: url("https://i.imgur.com/g63vXfd.jpg");
+
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size:cover;
+  /* height:2000px; */
   padding: 0.005% 0% 1% 0%;
 }
 .Contact-Socialmedia{
@@ -701,12 +708,15 @@ border: 2px solid blue;
 .Contact-Socialmedia >.col{
   max-width: fit-content !important;
   margin-left: 15%;
+  
+  
 }
 
 
 
 .Contact-Icons-div{
   text-align: -webkit-center ;
+  
 }
 
 .pagination{

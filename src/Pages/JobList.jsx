@@ -10,12 +10,22 @@ import useWindowDimensions from "../Components/WindowDImension";
 function JobList() {
     const [paginationSize,setpaginationSize] = useState("lg")
     const { height, width } = useWindowDimensions();
+    const [allJobs,setAllJobs] = useState([])
+
     useEffect(()=>{
         if(width<500){
           setpaginationSize("sm")
         }
         console.log("xbxsxnsx;nsnxsnx;sx",width)
       },[width])
+
+
+      useEffect(()=>{
+        fetch('http://localhost:8001/AllJobs')
+        .then(response => response.json())
+        .then(data =>setAllJobs(data) );
+    
+    },[])
   return (
     <div className="Home">
       <Header/>
@@ -24,12 +34,11 @@ function JobList() {
       </h1>
     
          
-      <JobCard/>
-      <JobCard/>
-      <JobCard/>
-      <JobCard/>
-      <JobCard/>
-      <JobCard/>
+      {allJobs.map((item,index)=>{
+        return(
+      <JobCard jobTitle={item.jobTitle} location={item.jobLocation} typeofWork={item.jobType} timing={item.jobTimings} />
+        )
+      })}
      
       {/* <div> */}
       <Row style={{marginTop:"5%",marginBottom:"5%"}}>

@@ -11,12 +11,15 @@ const JobPost = () => {
     const [jobType,setJobType] = useState("")
     const [jobCategory,setJobCategory] = useState("")
     const [jobRequirements,setJobRequirements] = useState("")
+    const [jobEducation,setJobEducation] = useState("")
+    const [jobExperience,setJobExperience] = useState("")
     const [jobVacancies,setJobVacancies] = useState("")
     const [companyName,setCompanyName] = useState("")
     const [companyDescription,setCompanyDescription] = useState("")
     const [companyLocation,setCompanyLocation] = useState("")
     const [companyWebsite,setCompanyWebsite] = useState("")
     const [companyLogo,setCompanyLogo] = useState("")
+    
     const [fieldSize,setFieldSize] = useState(60)
 
     useEffect(()=>{
@@ -31,7 +34,7 @@ const JobPost = () => {
     const SubmitJob=(event)=>{
         event.preventdefault()
         if(jobTitle != "" && jobDescription != "" && jobLocation != "" && jobTimings != "" && jobType != ""
-        && jobCategory != "" && jobRequirements != "" && jobVacancies != "" && companyName != "" && companyDescription != ""
+        && jobCategory != "" && jobEducation != "" && jobExperience != "" && jobVacancies != "" && companyName != "" && companyDescription != ""
         && companyDescription != "" && companyDescription != "" && companyLogo != "" )
         {
             // console.log(email, pass)
@@ -39,7 +42,7 @@ const JobPost = () => {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ jobTitle, jobDescription,jobLocation,jobTimings,jobType,jobCategory,
-            jobRequirements,jobVacancies,companyName,companyDescription,companyDescription,companyDescription,companyLogo
+                jobEducation,jobExperience,jobVacancies,companyName,companyDescription,companyDescription,companyDescription,companyLogo
             })
             };
             // setShow(true)
@@ -91,7 +94,12 @@ const JobPost = () => {
             JOB LOCATION
       </Col>
       <Col sm={9}>
-      <input required  onChange={(e)=>setJobLocation(e.target.value)} size={fieldSize} type="text" placeholder='Enter job location' />
+      <select style={{padding:5}} required  onChange={(e)=>setJobLocation(e.target.value)} name="cars" id="cars">
+  <option value="Karachi">Karachi</option>
+  <option value="Islamabad">Islamabad</option>
+  <option value="Lahore">Lahore</option>
+
+</select>
       </Col>
   </Row>
 
@@ -119,11 +127,21 @@ const JobPost = () => {
             JOB CATEGORY
       </Col>
       <Col sm={9}>
-      <select required  onChange={(e)=>setJobCategory(e.target.value)} name="cars" id="cars">
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
+      <select  required  onChange={(e)=>setJobCategory(e.target.value)} name="cars" id="cars">
+  <option value="volvo">Engineer</option>
+  <option value="saab">Computer Engineer</option>
+  <option value="Doctor">Doctor</option>
+  <option value="Teacher">Teacher</option>
+  <option value="Medicine">Medicine</option>
+  <option value="Musician">Musician</option>
+  <option value="Painter">Painter</option>
+  <option value="Receptionist">Receptionist</option>
+  <option value="Business">Business</option>
+  <option value="Delivery">Delivery</option>
+  <option value="Dentist">Dentist</option>
+  <option value="Reporter">Reporter</option>
+
+
 </select>
       </Col>
   </Row>
@@ -137,6 +155,44 @@ const JobPost = () => {
       </Col>
   </Row>
 
+  <Row className='form-row'>
+      <Col sm={3}>
+            EDUCATION
+      </Col>
+      <Col sm={9}>
+      <select required  onChange={(e)=>setJobEducation(e.target.value)} name="cars" id="cars">
+  <option value="Matric Pass">Matric Pass</option>
+  <option value="Intermediate Pass">Intermediate Pass</option>
+  <option value="Undergraduate">Undergraduate</option>
+  <option value="Graduated">Graduated</option>
+  <option value="Masters">Masters</option>
+
+</select>
+      </Col>
+  </Row>
+
+  <Row className='form-row'>
+      <Col sm={3}>
+            EXPERIENCE
+      </Col>
+      <Col sm={9}>
+      <select required  onChange={(e)=>setJobExperience(e.target.value)} name="cars" id="cars">
+  <option value="volvo">No Experience</option>
+  <option value="less than a year">less than a year</option>
+  <option value="more than a year">more than a year</option>
+  <option value="more than 2 years">more than 2 years</option>
+  <option value="more than 3 years">more than 3 years</option>
+  <option value="more than 5 years">more than 5 years</option>
+  <option value="more than 5 years">more than 5 years</option>
+  <option value="more than 7 years">more than 7 years</option>
+
+
+
+</select>
+      </Col>
+  </Row>
+
+            
   <Row className='form-row'>
       <Col sm={3}>
             VACANCIES AVAILABLE
