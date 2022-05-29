@@ -116,16 +116,16 @@ console.log("URL",downloadURL)
 }
 
     return (
-        <div className='Container job-post'>
-            <div className='Container'>
-            <header>
+        <div className='Container job-post jobPost_bg'>
+            <div className='Container '>
+            {/* <header>
                 <div className='HeaderText'>
                     <div >
                         <h1>POST A JOB</h1>
                         <p>Find your dream jobs with our powerful <b>JOB SEARCH WEB</b> </p>
                     </div>
                 </div>
-            </header>
+            </header> */}
         </div>
             {console.log("AAS",window.screen.width)}
             {/* <div>
