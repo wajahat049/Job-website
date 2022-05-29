@@ -17,6 +17,16 @@ function Home() {
 
 },[])
 
+// const [page,setpage] = useState(10)
+// const [lastpage,setlastpage] = useState(0)
+
+
+// const Page=(e)=>{
+//     setpage(e*10)
+//     setlastpage((e*10)-10)
+// }
+
+// console.log("PAGE",lastpage,page)
   return (
     <div className="Home">
       <Header/>
@@ -37,6 +47,13 @@ function Home() {
       <Button onClick={()=>{window.location.replace("/AllJobs")}}  className='see-more-btn' variant="flat">
     More Jobs
   </Button>
+  {/* <Button onClick={()=>{Page(1)}}>1</Button>
+  <Button onClick={()=>{Page(2)}}>2</Button>
+  <Button onClick={()=>{Page(3)}}>3</Button>
+  <Button onClick={()=>{Page(4)}}>4</Button>
+  <Button onClick={()=>{Page(5)}}>5</Button> */}
+
+  
       </div>
     </div>
 

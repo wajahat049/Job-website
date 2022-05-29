@@ -3,11 +3,14 @@ import '../App.css'
 import {Form,Button,Row,Col} from "react-bootstrap"
 import { storage } from '../Config/FirebaseConfig';
 import { ref, getDownloadURL, uploadBytesResumable } from "@firebase/storage";
+
 const JobPost = () => {
 
     const [jobTitle,setJobTitle] = useState("")
     const [jobDescription,setJobDescription] = useState("")
     const [jobLocation,setJobLocation] = useState("")
+    const [jobStartTimings,setjobStartTimings] = useState("")
+    const [jobEndTimings,setjobEndTimings] = useState("")
     const [jobTimings,setJobTimings] = useState("")
     const [jobType,setJobType] = useState("")
     const [jobCategory,setJobCategory] = useState("")
@@ -15,6 +18,11 @@ const JobPost = () => {
     const [jobEducation,setJobEducation] = useState("")
     const [jobExperience,setJobExperience] = useState("")
     const [jobVacancies,setJobVacancies] = useState("")
+    const [jobSalary,setjobSalary] = useState(0)
+    const [jobStartSalary,setjobStartSalary] = useState(0)
+    const [jobEndSalary,setjobEndSalary] = useState(0)
+    const [jobGender,setjobGender] = useState("")
+
     const [companyName,setCompanyName] = useState("")
     const [companyDescription,setCompanyDescription] = useState("")
     const [companyLocation,setCompanyLocation] = useState("")
@@ -22,34 +30,58 @@ const JobPost = () => {
     const [companyLogo,setCompanyLogo] = useState("")
     
     const [fieldSize,setFieldSize] = useState(60)
+    const [disableBtn,setdisableBtn] = useState(true)
+
 
     useEffect(()=>{
+        // console.log("JOB SALARY",jobStartSalary+" - "+jobEndSalary)
+        if(jobStartTimings!="" && jobEndTimings !=""){
+            setJobTimings(jobStartTimings+" - "+jobEndTimings)
+        }
+
+        if(jobStartSalary!=0 && jobEndSalary !=0){
+        console.log("JOB SALARY","RS:"+jobStartSalary+" - "+"RS:"+jobEndSalary)
+            setjobSalary("RS:"+jobStartSalary+" - "+"RS:"+jobEndSalary)
+        }
         if(window.screen.width<600){
             setFieldSize(35)
 
         }
 
-    },[window.screen.width])
-
+        if(jobTitle != "" && jobDescription != "" && jobLocation != "" && jobTimings != "" && jobType != ""
+        && jobCategory != "" && jobEducation != "" && jobExperience != "" && jobRequirements!="" && jobVacancies != "" && companyName != "" && companyDescription != ""
+     && companyLogo != "" && companyLocation!="" && companyWebsite!="" && jobStartTimings!="" && jobEndTimings!="" ){
+         setdisableBtn(false)
+     }
+    },[window.screen.width,jobTitle, jobDescription,jobLocation,jobTimings,jobType,jobCategory,
+        jobEducation,jobExperience,jobVacancies,companyName,companyLocation,companyWebsite,companyDescription,companyLogo
+    ,jobStartTimings,jobEndTimings,jobStartSalary,jobEndSalary])
 
     const SubmitJob=(event)=>{
-        event.preventdefault()
+        
+        console.log("JOB",jobTitle, jobDescription,jobLocation,jobTimings,jobType,jobCategory,
+        jobEducation,jobExperience,jobVacancies,companyName,companyLocation,companyWebsite,companyDescription,companyLogo
+    )
+        event.preventDefault()
         if(jobTitle != "" && jobDescription != "" && jobLocation != "" && jobTimings != "" && jobType != ""
-        && jobCategory != "" && jobEducation != "" && jobExperience != "" && jobVacancies != "" && companyName != "" && companyDescription != ""
-        && companyDescription != "" && companyDescription != "" && companyLogo != "" && companyLocation!="" && companyWebsite!="" )
+        && jobCategory != "" && jobEducation != "" && jobExperience != "" && jobRequirements!="" && jobVacancies != "" && companyName != "" && companyDescription != ""
+     && companyLogo != "" && companyLocation!="" && companyWebsite!="" )
         {
             // console.log(email, pass)
             const requestOptions = {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ jobTitle, jobDescription,jobLocation,jobTimings,jobType,jobCategory,
-                jobEducation,jobExperience,jobVacancies,companyName,companyLocation,companyWebsite,companyDescription,companyLogo
+                jobEducation,jobExperience,jobVacancies,companyName,companyLocation,companyWebsite,companyDescription,companyLogo,jobRequirements
             })
             };
             // setShow(true)
             fetch('http://localhost:8001/PostJob', requestOptions)
               .then(response => response.json())
-            //   .then(data => setMsg(data.message));
+              .then(data => console.log(data));
+        }
+        else{
+            console.log("FILL ALL")
         }
     }
 
@@ -139,7 +171,9 @@ console.log("URL",downloadURL)
             JOB TIMINGS
       </Col>
       <Col sm={9}>
-      <input required  onChange={(e)=>setJobTimings(e.target.value)} size={fieldSize} type="text" placeholder='Enter job timings' />
+      <input required  onChange={(e)=>setjobStartTimings(e.target.value)} size={fieldSize} type="time" />{" "} to {"  "}
+      <input required  onChange={(e)=>setjobEndTimings(e.target.value)} size={fieldSize} type="time" />
+
       </Col>
   </Row>
 
@@ -149,7 +183,13 @@ console.log("URL",downloadURL)
             JOB TYPE
       </Col>
       <Col sm={9}>
-      <input required  onChange={(e)=>setJobType(e.target.value)} size={fieldSize} type="text" placeholder='Enter job type' />
+      <select defaultValue={"Full Time"} className='Select'  required  onChange={(e)=>setJobType(e.target.value)} >
+  <option value="Full Time">Full Time</option>
+  <option value="Part Time">Part Time</option>
+  <option value="Internship">Internship</option>
+
+
+</select>
       </Col>
   </Row>
 
@@ -158,9 +198,9 @@ console.log("URL",downloadURL)
             JOB CATEGORY
       </Col>
       <Col sm={9}>
-      <select className='Select'  required  onChange={(e)=>setJobCategory(e.target.value)} name="cars" id="cars">
-  <option value="volvo">Engineer</option>
-  <option value="saab">Computer Engineer</option>
+      <select defaultValue={"Engineer"} className='Select'  required  onChange={(e)=>setJobCategory(e.target.value)} name="cars" id="cars">
+  <option value="Engineer">Engineer</option>
+  <option value="Computer Engineer">Computer Engineer</option>
   <option value="Doctor">Doctor</option>
   <option value="Teacher">Teacher</option>
   <option value="Medicine">Medicine</option>
@@ -182,7 +222,7 @@ console.log("URL",downloadURL)
             JOB REQUIREMENTS
       </Col>
       <Col sm={9}>
-      <input required  onChange={(e)=>setJobRequirements(e.target.value)} size={fieldSize} type="text" placeholder='Enter job requirements' />
+      <textarea rows={4} cols={30} required  onChange={(e)=>setJobRequirements(e.target.value)} size={fieldSize} type="text" placeholder='Enter job requirements' />
       </Col>
   </Row>
 
@@ -191,7 +231,7 @@ console.log("URL",downloadURL)
             EDUCATION
       </Col>
       <Col sm={9}>
-      <select className='Select' required  onChange={(e)=>setJobEducation(e.target.value)} name="cars" id="cars">
+      <select defaultValue={"Matric Pass"} className='Select' required  onChange={(e)=>setJobEducation(e.target.value)} name="cars" id="cars">
   <option value="Matric Pass">Matric Pass</option>
   <option value="Intermediate Pass">Intermediate Pass</option>
   <option value="Undergraduate">Undergraduate</option>
@@ -207,7 +247,7 @@ console.log("URL",downloadURL)
             EXPERIENCE
       </Col>
       <Col sm={9}>
-      <select className='Select' required  onChange={(e)=>setJobExperience(e.target.value)} name="cars" id="cars">
+      <select defaultValue={"No Experience"} className='Select' required  onChange={(e)=>setJobExperience(e.target.value)} name="cars" id="cars">
   <option value="No Experience">No Experience</option>
   <option value="less than a year">less than a year</option>
   <option value="more than a year">more than a year</option>
@@ -223,6 +263,18 @@ console.log("URL",downloadURL)
       </Col>
   </Row>
 
+  <Row className='form-row'>
+      <Col sm={3}>
+            GENDER
+      </Col>
+      <Col sm={9}>
+      <select defaultValue={"Any"} className='Select' required  onChange={(e)=>setjobGender(e.target.value)} >
+  <option value="Any">Any</option>
+  <option value="Male">Male</option>
+  <option value="Female">Female</option>
+</select>
+      </Col>
+  </Row>
             
   <Row className='form-row'>
       <Col sm={3}>
@@ -232,6 +284,20 @@ console.log("URL",downloadURL)
       <input required  onChange={(e)=>setJobVacancies(e.target.value)} size={fieldSize} type="number" placeholder='Enter no. of vacancies' />
       </Col>
   </Row>
+
+  <Row className='form-row'>
+      <Col sm={3}>
+            JOB SALARY (in Rupees)
+      </Col>
+      <Col sm={9}>
+      <input required  onChange={(e)=>setjobStartSalary(e.target.value)} size={fieldSize} type="Number" />{" "} to {"  "}
+      <input required  onChange={(e)=>setjobEndSalary(e.target.value)} size={fieldSize} type="Number" />
+
+      </Col>
+  </Row>
+
+  
+
 
 
   <h5 className='about-heading'>COMPANY DETAILS</h5>
@@ -257,7 +323,7 @@ console.log("URL",downloadURL)
 
   <Row className='form-row'>
       <Col sm={3}>
-            JOB LOCATION
+            COMPANY LOCATION
       </Col>
       <Col sm={9}>
       <select className='Select' required  onChange={(e)=>setCompanyLocation(e.target.value)} >
@@ -287,7 +353,7 @@ console.log("URL",downloadURL)
       </Col>
       {/* <img src={companyLogo} alt="" srcset="" /> */}
   </Row>
-  <Button onClick={()=>SubmitJob()} type="submit" style={{backgroundColor:"#ff9902",height:"70%"}} variant="flat" >
+  <Button   disabled={disableBtn} onClick={(event)=>SubmitJob(event)}  className="MyBtn" variant="flat" >
     Submit
   </Button>
 </Form>
