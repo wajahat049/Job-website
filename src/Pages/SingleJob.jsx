@@ -27,17 +27,17 @@ setJOB(
   return (
     <>
     <Header/>
-    <Container className="SingleJob">
+    <Container fluid className="SingleJob">
       <Row  className="JobTitle-and-Button" >
         <Col xs={2} sm={2}  md={1} className="Job-Image">
         <img className='Logo-Company'  src={JOB.companyLogo} alt="company logo"/>
         </Col>
-        <Col className="titleandsubtitles" xs={10} sm={10} md={7}>
+        <Col className="titleandsubtitles" xs={12} sm={12} md={7}>
           <Row><h2>
             {JOB.jobTitle}
             </h2></Row>
             <Row style={{width:"75%"}} >
-          <Col > <MdLocationPin size={20} style={{marginRight:"2%"}}/>
+          <Col  > <MdLocationPin size={20} style={{marginRight:"2%"}}/>
           {JOB.jobLocation}
           </Col>
               
@@ -61,7 +61,7 @@ setJOB(
     Save Job
   </Button>  
  
-  <Button style={{backgroundColor:"#ff9902",width:"50%",marginLeft:"15%",height:"100%"}} variant="flat" >
+  <Button style={{backgroundColor:"#ff9902",width:"40%",marginLeft:"15%",height:"100%"}} variant="flat" >
     Apply
   </Button>  
  
