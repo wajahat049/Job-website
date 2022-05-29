@@ -9,6 +9,10 @@ import useWindowDimensions from "../Components/WindowDImension";
 
 function JobList() {
     const [paginationSize,setpaginationSize] = useState("lg")
+    const [paginationStart,setpaginationStart] = useState(0)
+    const [paginationEnd,setpaginationEnd] = useState(10)
+    const [active,setactive] = useState(0)
+
     const { height, width } = useWindowDimensions();
     const [allJobs,setAllJobs] = useState([])
 
@@ -26,39 +30,39 @@ function JobList() {
         .then(data =>setAllJobs(data) );
     
     },[])
+
+    const changePage=(page)=>{
+      console.log("P",page-1,page*10,(page*10)-10)
+setactive(page-1)
+setpaginationEnd(page*10)
+setpaginationStart((page*10)-10)
+
+    }
+let items = [];
+for (let number = 0; number <= 9; number++) {
+  items.push(
+    <Pagination.Item onClick={()=>changePage(number+1)} key={number} active={number === active}>
+      {number+1}
+    </Pagination.Item>,
+  );
+}
+
   return (
     <div className="Home">
       <Header/>
       <h1 className='home-heading'>
         ALL JOBS
       </h1>
-    
-         
-      {allJobs.map((item,index)=>{
+
+      {allJobs.slice(paginationStart,paginationEnd).map((item,index)=>{
         return(
-      <JobCard jobTitle={item.jobTitle} location={item.jobLocation} typeofWork={item.jobType} timing={item.jobTimings} />
+      <JobCard jobTitle={item.jobTitle} jobLocation={item.jobLocation} jobType={item.jobType} jobTimings={item.jobTimings} />
         )
       })}
      
       {/* <div> */}
       <Row style={{marginTop:"5%",marginBottom:"5%"}}>
-            <Pagination size={paginationSize} >
-  <Pagination.First />
-  <Pagination.Prev />
-  <Pagination.Item active>{1}</Pagination.Item>
- 
-
-  <Pagination.Item>{2}</Pagination.Item>
-  <Pagination.Item >{3}</Pagination.Item>
-
-
-  <Pagination.Ellipsis />
-  <Pagination.Item>{18}</Pagination.Item>
-  <Pagination.Item>{19}</Pagination.Item>
-  <Pagination.Item>{20}</Pagination.Item>
-  <Pagination.Next />
-  <Pagination.Last />
-</Pagination>
+      <Pagination onChange={(e)=>{console.log("e",e)}} size={paginationSize}>{items}</Pagination>
 </Row>
       {/* </div> */}
     </div>
