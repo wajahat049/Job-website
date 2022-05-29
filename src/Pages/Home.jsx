@@ -49,7 +49,7 @@ function Home() {
             <motion.div 
               initial={{ x: "-100vw" }}
               animate={{x: 0}}
-              transition={{ type: "spring", duration: 7, bounce: 0.5 }}
+              transition={{ type: "spring", duration: 6, bounce: 0.4 }}
             >
               <JobCard companyDescription={item.companyDescription} companyLogo={item.companyLogo} companyName={item.companyName}
                 companyWebsite={item.companyWebsite} jobCategory={item.jobCategory} jobDescription={item.jobDescription}

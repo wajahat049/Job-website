@@ -7,7 +7,7 @@ import { AccountContext } from "./accountContext";
 import { SignupForm } from "./signupForm";
 
 const BoxContainer = styled.div`
-  width: 270px;
+  width: 290px;
   min-height: 495px;
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@ const BoxContainer = styled.div`
 
 const TopContainer = styled.div`
   width: 100%;
-  height: 240px;
+  height: 270px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -53,7 +53,7 @@ const HeaderContainer = styled.div`
 `;
 
 const HeaderText = styled.h2`
-  font-size: 30px;
+  font-size: 40px;
   font-weight: 600;
   line-height: 1.24;
   color: #fff;
@@ -64,7 +64,7 @@ const HeaderText = styled.h2`
 const SmallText = styled.h5`
   color: #fff;
   font-weight: 500;
-  font-size: 11px;
+  font-size: 16px;
   z-index: 10;
   margin: 0;
   margin-top: 7px;

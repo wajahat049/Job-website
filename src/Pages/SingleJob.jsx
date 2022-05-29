@@ -18,6 +18,7 @@ export default function SingleJob() {
   const [JOB,setJOB] = useState({})
 
 useEffect(()=>{
+  console.log("JOBPAGE",JSON.parse(localStorage.getItem("JOB")))
 setJOB(
   JSON.parse(localStorage.getItem("JOB"))
 )
@@ -77,13 +78,11 @@ setJOB(
               <h3>Job Summary</h3>
           </Row>
           <Row > <strong>Published on: </strong><span> April 14, 2019</span></Row>
-          <Row><strong>Vacancy: </strong><span> April 14, 2019</span></Row>
-          <Row><strong>Employment Status: </strong><span> April 14, 2019</span></Row>
-          <Row><strong>Experience: </strong><span> April 14, 2019</span></Row>
-          <Row><strong>Job Location: </strong><span> April 14, 2019</span></Row>
-          <Row><strong>Salary: </strong><span> April 14, 2019</span></Row>
-          <Row><strong>Gender: </strong><span> April 14, 2019</span></Row>
-          <Row><strong>Application Deadline: </strong><span> April 14, 2019</span></Row>
+          <Row><strong>Vacancy: </strong><span> {JOB.jobVacancies}</span></Row>
+          <Row><strong>Experience: </strong><span> {JOB.jobExperience}</span></Row>
+          <Row><strong>Job Location: </strong><span> {JOB.jobLocation}</span></Row>
+          <Row><strong>Salary: </strong><span> {JOB.jobSalary}</span></Row>
+          <Row><strong>Gender: </strong><span> {JOB.jobGender}</span></Row>
           
         </Row>
         <Row className="Share">
@@ -106,12 +105,7 @@ setJOB(
       <Row className="JobDescription">
         <div>
           <h3><MdOutlineSort/> Job Description</h3>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas hic atque ab consectetur. Distinctio,
-             autem dolorum quia libero ipsa tenetur a recusandae neque nihil aut adipisci minus? A, quam fugit!
-             </p>
-             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas hic atque ab consectetur. Distinctio,
-             autem dolorum quia libero ipsa tenetur a recusandae neque nihil aut adipisci minus? A, quam fugit!
-             </p>
+          <p>{JOB.jobDescription}</p>
              
         </div>
       </Row>
@@ -119,18 +113,9 @@ setJOB(
 
       <Row className="Responsibilities">
       <div >
-          <h3><IoIosRocket style={{marginRight:"1%"}}/>Responsibilities</h3>
+          <h3><IoIosRocket style={{marginRight:"1%"}}/>Requirements</h3>
           <ul>
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-              </li>
-              <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-              </li> <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-              </li> <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-              </li>
+            {JOB.jobRequirements}
           </ul>
         </div>
       </Row>
@@ -150,7 +135,7 @@ setJOB(
         </div>
       </Row>
       <Row>
-      <div className="OtherBenefits" >
+      {/* <div className="OtherBenefits" >
           <h3><IoIosBookmark style={{marginRight:"1%"}}/>Other Benefits</h3>
           <ul>
             <li>
@@ -164,7 +149,7 @@ setJOB(
               Lorem ipsum dolor sit amet consectetur adipisicing elit. 
               </li>
           </ul>
-        </div>
+        </div> */}
       </Row>
     </Container>
     </>

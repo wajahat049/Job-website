@@ -60,7 +60,7 @@ const GoToJob=()=>{
   </Button>   
   <br />
   {/* <Link to="/Job"> */}
-  <Button onClick={()=>GoToJob()}  className='Job-card-btn' variant="flat">
+  <Button onClick={()=>GoToJob()}  className='Job-card-btn MyBtn' variant="flat">
     Apply
   </Button>
   {/* </Link> */}
