@@ -56,7 +56,7 @@ for (let number = 0; number <= 9; number++) {
 
       {allJobs.slice(paginationStart,paginationEnd).map((item,index)=>{
         return(
-      <JobCard jobTitle={item.jobTitle} jobLocation={item.jobLocation} jobType={item.jobType} jobTimings={item.jobTimings} />
+      <JobCard jobGender={item.jobGender} jobSalary={item.jobSalary} jobDescription={item.jobDescription} jobTitle={item.jobTitle} jobLocation={item.jobLocation} jobType={item.jobType} jobTimings={item.jobTimings} />
         )
       })}
      

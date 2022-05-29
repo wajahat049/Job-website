@@ -34,7 +34,9 @@ const JobPost = () => {
 
 
     useEffect(()=>{
-        // console.log("JOB SALARY",jobStartSalary+" - "+jobEndSalary)
+        console.log("JOB SALARY",jobTitle,"-", jobDescription,"-",jobLocation,"-",jobTimings,"-",jobType,"-",jobCategory,"-",
+        jobEducation,"-",jobExperience,"-",jobVacancies,"-",companyName,"-",companyLocation,"-",companyWebsite,"-",companyDescription,"-",companyLogo,"-"
+    ,jobStartTimings,"-",jobEndTimings,"-",jobStartSalary,"-",jobEndSalary,"-",jobSalary,"-",jobGender)
         if(jobStartTimings!="" && jobEndTimings !=""){
             setJobTimings(jobStartTimings+" - "+jobEndTimings)
         }
@@ -50,29 +52,29 @@ const JobPost = () => {
 
         if(jobTitle != "" && jobDescription != "" && jobLocation != "" && jobTimings != "" && jobType != ""
         && jobCategory != "" && jobEducation != "" && jobExperience != "" && jobRequirements!="" && jobVacancies != "" && companyName != "" && companyDescription != ""
-     && companyLogo != "" && companyLocation!="" && companyWebsite!="" && jobStartTimings!="" && jobEndTimings!="" ){
+     && companyLogo != "" && companyLocation!="" && companyWebsite!="" && jobStartTimings!="" && jobEndTimings!="" && jobSalary!="" && jobGender!="" ){
          setdisableBtn(false)
      }
     },[window.screen.width,jobTitle, jobDescription,jobLocation,jobTimings,jobType,jobCategory,
         jobEducation,jobExperience,jobVacancies,companyName,companyLocation,companyWebsite,companyDescription,companyLogo
-    ,jobStartTimings,jobEndTimings,jobStartSalary,jobEndSalary])
+    ,jobStartTimings,jobEndTimings,jobStartSalary,jobEndSalary,jobSalary,jobGender])
 
     const SubmitJob=(event)=>{
         
-        console.log("JOB",jobTitle, jobDescription,jobLocation,jobTimings,jobType,jobCategory,
-        jobEducation,jobExperience,jobVacancies,companyName,companyLocation,companyWebsite,companyDescription,companyLogo
-    )
+    //     console.log("JOB",jobTitle, jobDescription,jobLocation,jobTimings,jobType,jobCategory,
+    //     jobEducation,jobExperience,jobVacancies,companyName,companyLocation,companyWebsite,companyDescription,companyLogo
+    // )
         event.preventDefault()
         if(jobTitle != "" && jobDescription != "" && jobLocation != "" && jobTimings != "" && jobType != ""
         && jobCategory != "" && jobEducation != "" && jobExperience != "" && jobRequirements!="" && jobVacancies != "" && companyName != "" && companyDescription != ""
-     && companyLogo != "" && companyLocation!="" && companyWebsite!="" )
+     && companyLogo != "" && companyLocation!="" && companyWebsite!="" && jobSalary!="" && jobGender!="" )
         {
             // console.log(email, pass)
             const requestOptions = {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ jobTitle, jobDescription,jobLocation,jobTimings,jobType,jobCategory,
-                jobEducation,jobExperience,jobVacancies,companyName,companyLocation,companyWebsite,companyDescription,companyLogo,jobRequirements
+                jobEducation,jobExperience,jobVacancies,companyName,companyLocation,companyWebsite,companyDescription,companyLogo,jobRequirements,jobSalary,jobGender
             })
             };
             // setShow(true)

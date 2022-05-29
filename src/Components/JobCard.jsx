@@ -18,7 +18,7 @@ const GoToJob=()=>{
     companyLogo:props.companyLogo,companyName:props.companyName,companyWebsite:props.companyWebsite,jobCategory:props.jobCategory,
     jobDescription:props.jobDescription,jobRequirements:props.jobRequirements,jobSalary:props.jobSalary,
     jobVacancies:props.jobVacancies,companyLocation:props.companyLocation,jobLocation:props.jobLocation,jobType:props.jobType,
-    jobTimings:props.jobTimings
+    jobTimings:props.jobTimings,jobSalary:props.jobSalary,jobGender:props.jobGender
   }))
   window.location.replace("/Job")
 }

@@ -6,8 +6,8 @@ import { Button } from "react-bootstrap"
 import { useEffect, useState } from "react"
 import { propTypes } from 'react-bootstrap/esm/Image';
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { useAnimation } from "framer-motion"
+// import { useInView } from "react-intersection-observer";
+// import { useAnimation } from "framer-motion"
 
 
 function Home() {

@@ -13,14 +13,13 @@ export default function Footer() {
       <Row >
         <Col sm={4} m={4} >
           <div  >
-              <h2>Top Jobs</h2>
+              <h2>Top Categories</h2>
           <ul>
-  <li>Web Design</li>
-  <li>Graphic Design</li>
-  <li>Web Developer</li>
-  <li>Python</li>
-  <li>HTML</li>
-  <li>CSS</li>
+  <li >Computer Engineer</li>
+  <li>Teacher</li>
+  <li>Business</li>
+  <li>Doctor</li>
+  <li>Receptionist</li>
 
 
 </ul>
