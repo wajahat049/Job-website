@@ -2,11 +2,7 @@ import * as React from 'react';
 import { AiOutlineFacebook,AiOutlineInstagram, AiOutlineTwitter, AiOutlineMail } from 'react-icons/ai'
 import "../App.css"
 import {Container,Row,Col,Form,Button} from "react-bootstrap"
-import UseAnimations from "react-useanimations";
-import facebook from 'react-useanimations/lib/facebook'
-import twitter from 'react-useanimations/lib/twitter'
-import instagram from 'react-useanimations/lib/instagram'
-import linkedin from 'react-useanimations/lib/linkedin'
+
 export default function Footer() {
   return (
     <Container fluid className="Footer">
@@ -46,10 +42,10 @@ export default function Footer() {
         <div className="SocialMediaIcons" >
               <h2>Social Media</h2>
           <ul>
-            <li><UseAnimations strokeColor='#ff9902'  speed={2} animation={facebook} size={56}  /></li>
-  <li> <UseAnimations strokeColor='#ff9902'  speed={2} animation={instagram} size={56}  /></li>
-  <li> <UseAnimations strokeColor='#ff9902'  speed={2} animation={twitter} size={56}  /></li>
-  <li><UseAnimations strokeColor='#ff9902'  speed={2} animation={linkedin} size={56}  />
+            <li><AiOutlineFacebook size={40}/></li>
+  <li><AiOutlineInstagram size={40}/></li>
+  <li><AiOutlineTwitter size={40}/></li>
+  <li><AiOutlineMail size={40}/>
 </li>
 
   

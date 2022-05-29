@@ -26,7 +26,6 @@ function JobList() {
         .then(data =>setAllJobs(data) );
     
     },[])
-    console.log("JOBS",allJobs)
   return (
     <div className="Home">
       <Header/>
@@ -37,7 +36,7 @@ function JobList() {
          
       {allJobs.map((item,index)=>{
         return(
-      <JobCard key={index} jobTitle={item.jobTitle} jobSalary={item.jobSalary} jobLocation={item.jobLocation} jobType={item.jobType} jobTimings={item.jobTimings} />
+      <JobCard jobTitle={item.jobTitle} location={item.jobLocation} typeofWork={item.jobType} timing={item.jobTimings} />
         )
       })}
      

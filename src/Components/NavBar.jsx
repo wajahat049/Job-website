@@ -1,18 +1,17 @@
 import React from 'react';
 import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { RiContactsFill } from 'react-icons/ri';
-import {ImProfile} from "react-icons/im";
 import { IoLogIn } from 'react-icons/io5';
 import Modal from 'react-modal';
 import styled from "styled-components";
 import { AccountBox } from "../Components/accountBox";
 import JobLogo from "../Assests/myjoblogo.png"
-import Profile from "./Profile"
+
 
 
 const customStyles = {
     content: {
-        top: '42%',
+        top: '45%',
         left: '50%',
         right: 'auto',
         bottom: 'auto',
@@ -20,8 +19,7 @@ const customStyles = {
         transform: 'translate(-50%, -50%)',
         borderRadius:20,
         marginTop:"5%",
-        padding:"28px",
-        border:"3px solid #ff9902"
+        padding:"8px",
     },
     overlay: {
         position: 'fixed',
@@ -47,24 +45,14 @@ const AppContainer = styled.div`
 
 const NavBar = () => {
     const [modalIsOpen, setIsOpen] = React.useState(false);
-    const [modalIsOpenProfile, setIsOpenProfile] = React.useState(false);
-
     const style = { color: "white", fontSize: "1em" }
 
     function openModal() {
-        setIsOpen(!modalIsOpen);
+        setIsOpen(true);
     }
 
     function closeModal() {
         setIsOpen(false);
-    }
-
-    function openModalProfile() {
-        setIsOpenProfile(!modalIsOpenProfile);
-    }
-
-    function closeModalProfile() {
-        setIsOpenProfile(false);
     }
 
 
@@ -86,20 +74,6 @@ const NavBar = () => {
                         <Nav.Link href="/JobPost">Job Post</Nav.Link>
                     </Nav>
                     <Nav>
-                        <button style={{marginRight:"15px"}} onClick={openModalProfile} className="IconButton"> <ImProfile style={style} className="icons" /> </button>
-
-                        <Modal
-                            isOpen={modalIsOpenProfile}
-                            // onAfterOpen={afterOpenModal}
-                            onRequestClose={closeModalProfile}
-                            style={customStyles}
-                            contentLabel="Example Modal"
-                        >
-                           <Profile/>
-                        </Modal>
-
-                    </Nav>
-                    <Nav>
                         <button onClick={openModal} className="IconButton"> <RiContactsFill style={style} className="icons" /> </button>
 
                         <Modal
@@ -115,7 +89,6 @@ const NavBar = () => {
                         </Modal>
 
                     </Nav>
-                    
                 </Navbar.Collapse>
             </Container>
         </Navbar>

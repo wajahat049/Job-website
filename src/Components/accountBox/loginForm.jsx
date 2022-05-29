@@ -31,9 +31,6 @@ export function LoginForm(props) {
 const save=(data)=>{
   setMsg(data.message)
   setvariant(data.variant)
-  if(data.message == "Successfully Login"){
-    localStorage.setItem("USER",JSON.stringify({email,pass}))
-  }
 
 
 }
@@ -72,7 +69,7 @@ const save=(data)=>{
         <Marginer direction="vertical" margin="1em" />
         
         <MutedLink href="#">
-          Don't have an account?{" "}
+          Don't have an accoun?{" "}
           <BoldLink href="#" onClick={switchToSignup}>
             Signup
           </BoldLink>
