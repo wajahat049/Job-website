@@ -50,13 +50,14 @@ for (let number = 0; number <= 9; number++) {
   return (
     <div className="Home">
       <Header/>
+      {console.log("ALL",allJobs)}
       <h1 className='home-heading'>
         ALL JOBS
       </h1>
 
       {allJobs.slice(paginationStart,paginationEnd).map((item,index)=>{
         return(
-      <JobCard jobGender={item.jobGender} jobSalary={item.jobSalary} jobDescription={item.jobDescription} jobTitle={item.jobTitle} jobLocation={item.jobLocation} jobType={item.jobType} jobTimings={item.jobTimings} />
+      <JobCard jobGender={item.jobGender} jobSalary={item.jobSalary} jobRequirements={item.jobRequirements} jobDescription={item.jobDescription} jobTitle={item.jobTitle} jobLocation={item.jobLocation} jobType={item.jobType} jobTimings={item.jobTimings} />
         )
       })}
      

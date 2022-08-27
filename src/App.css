@@ -17,7 +17,7 @@ header {
     width: 100%;
     background: url('./Assests/bg.jpg');
     background-position: center;
-    height: 650px;
+    height: 450px;
     /* margin-top: 70px; */
     background-size: cover;
     background-repeat: no-repeat;
@@ -57,6 +57,7 @@ header {
 .navBar {
     margin-left: 2%;
     padding: 3px !important;
+    font-size: 17px;
 }
 
 .navBar a {
@@ -64,16 +65,22 @@ header {
 }
 
 .icons {
-    margin-right: 10px;
-    margin: 10px;
+    /* margin-right: 10px; */
+    margin: 5px;
+    
 }
 
+
 .SearchBox {
-    width: 65%;
+    width: 70%;
     height: auto;
     background-color: var(--goldColor);
     padding: 20px;
     justify-content: space-between !important;
+    border-radius: 120px 0px 120px 0px;
+    /* box-shadow: 1px 3px 5px 1px #cacad0; */
+
+    
     /* border-radius: 2%; */
 }
 
@@ -105,6 +112,10 @@ header {
     border-style: solid;
     border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
 }
+.IconButton:hover{
+    box-shadow: 1px 3px 5px 1px #ff9902;
+}
+
 
 
 /* *************************************************************************************** */
@@ -230,22 +241,29 @@ li:hover {
     border-radius: 12px;
     padding-top: 1%;
     padding-bottom: 1%;
+    font-size: 17px;
 }
 
 .Job-card-btn {
     background-color: #ff9902;
     align-self: end;
-    height: 25% !important;
-    width: 40%;
+    height: 45px !important;
+    width: 55%;
     margin: 15px;
+    font-size: 17px !important;
+
 }
 
 .Job-time-card-btn {
     background-color: rgb(2, 35, 95) !important;
     align-self: end;
-    height: 25% !important;
-    width: 40%;
+    height: 45px !important;
+    width: 55%;
     margin: 15px;
+    font-size: 17px !important;
+}
+.titleandsubtitles {
+    font-size: 17px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -261,12 +279,13 @@ li:hover {
         /* font-size: small; */
         /* margin: 50 !important; */
         width: 120% !important;
+        
     }
     .HeaderText h1 {
         font-size: 40px !important;
     }
     header {
-        height: 380px !important;
+        height: 300px !important;
     }
     .JobCard {
         width: 90% !important;
@@ -274,15 +293,15 @@ li:hover {
     }
     .Job-card-btn {
         /* height:30% !important; */
-        width: 65%;
+        width: 100%;
         margin: 10px;
         font-size: small !important;
     }
     .Job-time-card-btn {
         /* height:25% !important; */
-        width: 65%;
+        width: 100%;
         margin: 10px;
-        font-size: small !important;
+        font-size: 14px !important;
     }
     .ImgandDetail img {
         width: 100%;
@@ -340,7 +359,7 @@ li:hover {
         /* margin: 2px !important; */
         /* padding: 0% !important; */
         /* max-width: 65% !important; */
-        width: 100% !important;
+        width: 60% !important;
         margin-left: 0% !important;
     }
     .Contact-Icons-div {
@@ -382,10 +401,11 @@ border: 2px solid blue;
 .SingleJob {
     margin-top: 10%;
     margin-bottom: 10%;
+    margin-left: 2% !important;
 }
 
 .JobTitle-and-Button {
-    padding-left: 5px;
+    padding-left: 15px;
 }
 
 .Job-Image {
@@ -411,6 +431,7 @@ border: 2px solid blue;
 .Summary .row {
     display: flow-root;
     margin-bottom: 2%;
+    font-size: 17px;
 }
 
 .Summary {
@@ -419,7 +440,8 @@ border: 2px solid blue;
     padding: 2.5%;
     margin-bottom: 10%;
     padding-bottom: 15%;
-    width: 110%;
+    border-radius: 5px;
+
 }
 
 .Share {
@@ -427,6 +449,8 @@ border: 2px solid blue;
     box-shadow: 1px 3px 5px 1px #ff9902;
     padding: 5%;
     margin-bottom: 10%;
+    border-radius: 5px;
+
 }
 
 .Share ul li {
@@ -442,26 +466,29 @@ border: 2px solid blue;
     margin-top: 5% !important;
 }
 
-.JobDescription h3 {
+.JobDescription h4 {
     color: #ff9902;
     margin-bottom: 2%;
 }
 
 .JobDescription p {
     width: 80%;
+    font-size: 17px;
+    margin-left: 3%;
 }
 
 .Responsibilities {
     margin-top: 5% !important;
 }
 
-.Responsibilities h3 {
+.Responsibilities h4 {
     color: #ff9902;
     margin-bottom: 2%;
 }
 
 .Responsibilities ul {
     margin-left: 2%;
+    font-size: 17px;
 }
 
 .Responsibilities ul li {
@@ -473,13 +500,14 @@ border: 2px solid blue;
     margin-top: 5% !important;
 }
 
-.EducationExperience h3 {
+.EducationExperience h4 {
     color: #ff9902;
     margin-bottom: 2%;
 }
 
 .EducationExperience ul {
-    margin-left: 2%;
+    margin-left: 3%;
+    font-size: 17px;
 }
 
 .EducationExperience ul li {
@@ -491,7 +519,7 @@ border: 2px solid blue;
     margin-top: 5% !important;
 }
 
-.OtherBenefits h3 {
+.OtherBenefits h4 {
     color: #ff9902;
     margin-bottom: 2%;
 }
@@ -547,6 +575,7 @@ border: 2px solid blue;
 .category-row {
     text-align: -webkit-center;
     margin-top: 6% !important;
+    margin-left: 1% !important;
 }
 
 .category-row>.col {
@@ -572,6 +601,7 @@ border: 2px solid blue;
     margin-bottom: 5%;
     font-weight: 540;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: darkgray;
 }
 
 
@@ -583,7 +613,7 @@ border: 2px solid blue;
     margin: 3%;
     font-weight: bold;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    margin-bottom: 5%;
+    margin-bottom: 7%;
 }
 
 .about-desc-row {
@@ -594,7 +624,8 @@ border: 2px solid blue;
     color: rgb(2, 35, 95);
     font-weight: bold;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 140%;
+    font-size: 120%;
+    margin-bottom: 5%;
 }
 
 .about-desc-col {
@@ -666,11 +697,15 @@ border: 2px solid blue;
 
 .Contact-Socialmedia>.col {
     max-width: fit-content !important;
-    margin-left: 15%;
+    margin-left: 10%;
 }
 
 .Contact-Icons-div {
     text-align: -webkit-center;
+    margin-right: 20% !important;
+    margin-left: 20% !important;
+
+    /* width: 40%; */
 }
 
 .pagination {
@@ -688,8 +723,8 @@ border: 2px solid blue;
 }
 
 .jobPost_bg {
-    /* background-image: url("https://i1.wp.com/orlandocabrera.com/wp-content/uploads/2013/12/contactform-background-32.jpg?ssl=1"); */
-    background-image: url("https://api.asm.skype.com/v1/objects/0-sa-d2-37d15efbb815d5957ef6fcdb88061b88/views/imgpsh_fullsize_anim");
+    background-image: url("./Assests/pexels-veeterzy-303383.jpg");
+    /* background-image: url("https://api.asm.skype.com/v1/objects/0-sa-d2-37d15efbb815d5957ef6fcdb88061b88/views/imgpsh_fullsize_anim"); */
     background-repeat: no-repeat;
     background-size: cover;
     /* height:2000px; */

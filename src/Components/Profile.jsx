@@ -11,16 +11,23 @@ import {Link,useHistory } from "react-router-dom"
 
 export default function Profile(props) {
   const history = useHistory();
+  const [user,setUser] = React.useState({name:"anonymous",email:"anonymous123@gmail.com"})
+
+  React.useEffect(()=>{
+            if(JSON.parse(localStorage.getItem("USER"))){
+                setUser(JSON.parse(localStorage.getItem("USER")))
+            }
+  },[])
 
 
 
 
   return (
-    <Container  style={{marginBottom:"10%",marginTop:"10%",width:"100%"}}>
+    <Container  style={{marginBottom:"10%",marginTop:"10%",width:"100%",}}>
       <Row  style={{paddingLeft:"15px",marginBottom:"10%"}}>
           <img style={{width:"250px",height:"170px"}} src={ProfileImage}/>
       </Row>
-      <Row >
+      <Row  >
          <bold > Name: </bold> 
          <p style={{color:"#ff9902"}}>Wajahat Ahmed </p>
       </Row>

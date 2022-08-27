@@ -33,10 +33,10 @@ setJOB(
         <img className='Logo-Company'  src={JOB.companyLogo} alt="company logo"/>
         </Col>
         <Col className="titleandsubtitles" xs={12} sm={12} md={7}>
-          <Row><h2>
+          <Row><h3>
             {JOB.jobTitle}
-            </h2></Row>
-            <Row style={{width:"75%"}} >
+            </h3></Row>
+            <Row >
           <Col  > <MdLocationPin size={20} style={{marginRight:"2%"}}/>
           {JOB.jobLocation}
           </Col>
@@ -69,13 +69,13 @@ setJOB(
       </Row>
       <Row className="ImgandDetail">
         <Col sm={12} md={8} >
-        <img src={"https://preview.colorlib.com/theme/careers/images/sq_img_1.jpg" }alt="" />
+        <img style={{borderRadius:"10px",boxShadow:"0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}} src={"https://preview.colorlib.com/theme/careers/images/sq_img_1.jpg" }alt="" />
         
         </Col>
         <Col >
         <Row className="Summary">
           <Row style={{marginBottom:"4%",color:"#ff9902"}} >
-              <h3>Job Summary</h3>
+              <h4>Job Summary</h4>
           </Row>
           <Row > <strong>Published on: </strong><span> April 14, 2019</span></Row>
           <Row><strong>Vacancy: </strong><span> {JOB.jobVacancies}</span></Row>
@@ -86,7 +86,7 @@ setJOB(
           
         </Row>
         <Row className="Share">
-          <h3 style={{marginBottom:"4%",color:"#ff9902"}}> Share</h3>
+          <h4 style={{marginBottom:"4%",color:"#ff9902"}}> Share</h4>
           <ul>
            
           <li><FaFacebookF size={28}/></li>
@@ -104,7 +104,7 @@ setJOB(
       </Row>
       <Row className="JobDescription">
         <div>
-          <h3><MdOutlineSort/> Job Description</h3>
+          <h4><MdOutlineSort/> Job Description</h4>
           <p>{JOB.jobDescription}</p>
              
         </div>
@@ -113,7 +113,7 @@ setJOB(
 
       <Row className="Responsibilities">
       <div >
-          <h3><IoIosRocket style={{marginRight:"1%"}}/>Requirements</h3>
+          <h4><IoIosRocket style={{marginRight:"1%"}}/>Requirements</h4>
           <ul>
             {JOB.jobRequirements}
           </ul>
@@ -123,7 +123,7 @@ setJOB(
 
       <Row className="EducationExperience">
       <div >
-          <h3><GiWhiteBook style={{marginRight:"1%"}}/>Education + Experience</h3>
+          <h4><GiWhiteBook style={{marginRight:"1%"}}/>Education + Experience</h4>
           <ul>
             <li>
               {JOB.jobEducation} 

@@ -12,7 +12,7 @@ import Profile from "./Profile"
 
 const customStyles = {
     content: {
-        top: '42%',
+        top: '45%',
         left: '50%',
         right: 'auto',
         bottom: 'auto',
@@ -20,7 +20,7 @@ const customStyles = {
         transform: 'translate(-50%, -50%)',
         borderRadius:20,
         marginTop:"5%",
-        padding:"28px",
+        // padding:"28px",
         border:"3px solid #ff9902"
     },
     overlay: {
@@ -49,7 +49,7 @@ const NavBar = () => {
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [modalIsOpenProfile, setIsOpenProfile] = React.useState(false);
 
-    const style = { color: "white", fontSize: "1em" }
+    const style = { color: "white", fontSize: "1em",boxShadow:"1px 3px 5px 1px #ff9902" }
 
     function openModal() {
         setIsOpen(!modalIsOpen);
@@ -72,7 +72,7 @@ const NavBar = () => {
         <Navbar sticky='top' collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container fluid>
                 <Navbar.Brand href="#home">
-                    <img width={65} height={60} src={JobLogo} alt="" />
+                    <img width={60} height={50} src={JobLogo} alt="" />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -86,7 +86,7 @@ const NavBar = () => {
                         <Nav.Link href="/JobPost">Job Post</Nav.Link>
                     </Nav>
                     <Nav>
-                        <button style={{marginRight:"15px"}} onClick={openModalProfile} className="IconButton"> <ImProfile style={style} className="icons" /> </button>
+                        <button style={{marginRight:"15px",borderRadius:"5px"}} onClick={openModalProfile} className="IconButton"> <ImProfile style={style} className="icons" /> </button>
 
                         <Modal
                             isOpen={modalIsOpenProfile}
@@ -100,7 +100,7 @@ const NavBar = () => {
 
                     </Nav>
                     <Nav>
-                        <button onClick={openModal} className="IconButton"> <RiContactsFill style={style} className="icons" /> </button>
+                        <button onClick={openModal} style={{borderRadius:"5px"}} className="IconButton"> <RiContactsFill style={style} className="icons" /> </button>
 
                         <Modal
                             isOpen={modalIsOpen}

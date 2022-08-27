@@ -90,8 +90,8 @@ console.log(allJobsFilter)
         <header>
           <div className='HeaderText'>
             <div className="SearchBox">
-              <Row className="mb-4 RowStyle">
-                <Form.Group className="SearchJob" as={Col} sm={10} md={3}>
+              <Row className="mb-4" style={{marginLeft:"25px"}}>
+                <Form.Group  as={Col} sm={10} md={3}>
                   <Form.Select id='Category'>
                     <option>All Category</option>
                     <option value="Doctor" >Doctor</option>
