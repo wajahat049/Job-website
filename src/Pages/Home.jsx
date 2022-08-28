@@ -6,14 +6,16 @@ import { Button } from "react-bootstrap"
 import { useEffect, useState } from "react"
 import { propTypes } from 'react-bootstrap/esm/Image';
 import { motion } from "framer-motion";
+import {connect} from "react-redux"
 // import { useInView } from "react-intersection-observer";
 // import { useAnimation } from "framer-motion"
 
 
-function Home() {
+function Home(props) {
   const [allJobs, setAllJobs] = useState([])
 
   useEffect(() => {
+    console.log("USER",props.userInfo)
     fetch('http://localhost:8001/AllJobs')
       .then(response => response.json())
       .then(data => setAllJobs(data));
@@ -71,4 +73,10 @@ function Home() {
   );
 }
 
-export default Home;
+function mapStateToProps(state) {
+  return {
+      userInfo:state.userInfo
+  }
+}
+
+export default connect(mapStateToProps,null)( Home);

@@ -5,7 +5,8 @@ export const BoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 5px;
+  margin-top: 40px;
+  padding-bottom:20px;
 `;
 
 export const FormContainer = styled.form`
@@ -34,7 +35,7 @@ export const Input = styled.input`
   color:rgba(170, 170, 170, 1);
   margin-top:5px;
   width: 100%;
-  height: 27px;
+  height: 35px;
   outline: none;
   border: 1px solid rgba(200, 200, 200, 0.6);
   padding: 0px 10px;

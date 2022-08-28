@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { LoginForm } from "./loginForm";
+import  LoginForm  from "./loginForm";
 import { motion } from "framer-motion";
 // import {motion} from 'framer-motion/dist/es/index'
 import { AccountContext } from "./accountContext";
 import { SignupForm } from "./signupForm";
 
 const BoxContainer = styled.div`
-  width: 250px;
-  height: 440px;
+  width: 300px;
+  height: 520px;
   display: flex;
   flex-direction: column;
   border-radius: 19px;
@@ -16,11 +16,14 @@ const BoxContainer = styled.div`
   box-shadow: 0 0 2px rgba(15, 15, 15, 0.28);
   position: relative;
   overflow: hidden;
+  margin-top:2%;
+  border:2px solid rgb(241, 196, 15)
+
 `;
 
 const TopContainer = styled.div`
   width: 100%;
-  height: 230px;
+  height: 290px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

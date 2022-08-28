@@ -12,8 +12,11 @@ import { Marginer } from "../marginer";
 import { AccountContext } from "./accountContext";
 
 import { Col, Row, Toast } from "react-bootstrap";
+import {connect} from "react-redux"
+import { changeisuser } from '../../Store/action';
 
-export function LoginForm(props) {
+
+function LoginForm(props) {
   const { switchToSignup } = useContext(AccountContext);
 
 
@@ -32,7 +35,8 @@ const save=(data)=>{
   setMsg(data.message)
   setvariant(data.variant)
   if(data.message == "Successfully Login"){
-    localStorage.setItem("USER",JSON.stringify({email,pass}))
+    props.changeisuser({email,pass})
+    // localStorage.setItem("USER",JSON.stringify({email,pass}))
   }
 
 
@@ -86,3 +90,18 @@ const save=(data)=>{
     </>
   );
 }
+
+function mapStateToProps(state) {
+  return {
+      userInfo:state.userInfo
+  }
+}
+
+
+function mapDispatchToProps(dispatch) {
+  return {
+    changeisuser:(userInfo)=>dispatch(changeisuser(userInfo))
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(LoginForm)
