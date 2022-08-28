@@ -2,13 +2,16 @@ import React from 'react';
 import { Container, Row, Col, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { RiContactsFill } from 'react-icons/ri';
 import {ImProfile} from "react-icons/im";
+import {FiLogOut} from "react-icons/fi";
 import { IoLogIn } from 'react-icons/io5';
 import Modal from 'react-modal';
 import styled from "styled-components";
 import { AccountBox } from "../Components/accountBox";
 import JobLogo from "../Assests/myjoblogo.png"
 import Profile from "./Profile"
-
+import {connect} from "react-redux"
+import { changeisuser } from '../Store/action';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
 const customStyles = {
     content: {
@@ -21,7 +24,8 @@ const customStyles = {
         borderRadius:20,
         marginTop:"5%",
         // padding:"28px",
-        border:"3px solid #ff9902"
+        border:"3px solid #ff9902",
+    
     },
     overlay: {
         position: 'fixed',
@@ -45,7 +49,7 @@ const AppContainer = styled.div`
 
 
 
-const NavBar = () => {
+const NavBar = (props) => {
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [modalIsOpenProfile, setIsOpenProfile] = React.useState(false);
 
@@ -83,7 +87,13 @@ const NavBar = () => {
                         <Nav.Link href="/Categories">Categories</Nav.Link>
                         <Nav.Link href="/JobSearch">Job Search</Nav.Link>
                         {/* <Nav.Link href="/JobList">Job List</Nav.Link> */}
+                        {
+                            props.userInfo.email=="admin@gmail.com" && 
+                            props.userInfo.pass=="admin123"?
                         <Nav.Link href="/JobPost">Job Post</Nav.Link>
+                            :
+                            null
+                        }
                     </Nav>
                     <Nav>
                         <button style={{marginRight:"15px",borderRadius:"5px"}} onClick={openModalProfile} className="IconButton"> <ImProfile style={style} className="icons" /> </button>
@@ -100,8 +110,7 @@ const NavBar = () => {
 
                     </Nav>
                     <Nav>
-                        <button onClick={openModal} style={{borderRadius:"5px"}} className="IconButton"> <RiContactsFill style={style} className="icons" /> </button>
-
+                        <button onClick={()=>openModal()}   style={{borderRadius:"5px"}} className="IconButton"> <FiLogOut style={style} className="icons" /> </button>
                         <Modal
                             isOpen={modalIsOpen}
                             // onAfterOpen={afterOpenModal}
@@ -109,9 +118,23 @@ const NavBar = () => {
                             style={customStyles}
                             contentLabel="Example Modal"
                         >
-                            <AppContainer>
-                                <AccountBox />
-                            </AppContainer>
+                            <h5>
+                            Are you sure you want to Logout?
+                            </h5>
+                            <Row style={{textAlign:"center",marginTop:"10%"}}>
+                                <Col>
+                        <button onClick={()=>{props.changeisuser({})
+                        window.localStorage.clear()
+                        window.location.reload("/")
+                        }
+                    }   style={{borderRadius:"5px"}} className="IconButton"> YES </button>
+                                </Col>
+                                <Col>
+                        <button onClick={()=>closeModal()}   style={{borderRadius:"5px"}} className="IconButton"> NO </button>
+                                
+                                </Col>
+
+                            </Row>
                         </Modal>
 
                     </Nav>
@@ -122,4 +145,19 @@ const NavBar = () => {
     )
 }
 
-export default NavBar;
+
+function mapStateToProps(state) {
+    return {
+        userInfo:state.userInfo
+    }
+  }
+  
+  
+  function mapDispatchToProps(dispatch) {
+    return {
+      changeisuser:(userInfo)=>dispatch(changeisuser(userInfo))
+    }
+  }
+
+
+  export default connect(mapStateToProps,mapDispatchToProps)(NavBar)

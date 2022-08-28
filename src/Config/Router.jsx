@@ -19,6 +19,8 @@ import JobSearch from "../Pages/JobSearch";
 import Categories from "../Pages/Categories";
 import JobPost from "../Pages/JobPost";
 import JobList from "../Pages/JobList";
+import Authentication from "../Pages/Authentication";
+import {connect} from "react-redux"
 
 
 
@@ -30,6 +32,13 @@ class AppRouter extends Component {
   render() {
     return (
       <Router>
+        {
+          this.props.userInfo.email=="anonymous@gmail.com" ?
+          
+          <Route exact path="/" component={Authentication} />
+        :
+        <>
+      {console.log("USER INFO", this.props.userInfo)}
         <NavBar/>
           <Route exact path="/" component={Home} />
           <Route exact path="/Job" component={Job} />
@@ -39,16 +48,18 @@ class AppRouter extends Component {
           <Route exact path="/Categories" component={Categories} />
           <Route exact path="/JobPost" component={JobPost} />
           <Route exact path="/AllJobs" component={JobList} />
-
-
-
-
-
-          {/* <Route  path="/JobCard" component={JobCard} /> */}
-<Footer/>
+          <Footer/>
+          </>
+        }
       </Router>
     );
   }
 }
 
-export default AppRouter;
+function mapStateToProps(state) {
+  return {
+      userInfo:state.userInfo
+  }
+}
+
+export default connect(mapStateToProps,null)(AppRouter);
