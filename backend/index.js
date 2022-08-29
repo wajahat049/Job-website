@@ -5,7 +5,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 const { MongoClient, ServerApiVersion } = require("mongodb");
-const{Login,loadMongoDb,getData,postData,postJob,getJobs,findData,ContactForm} = require("./functions.js")
+const{Login,loadMongoDb,getData,postData,postJob,getJobs,findData,ContactForm,jobsAccToCategory} = require("./functions.js")
 
 loadMongoDb()
 
@@ -17,12 +17,18 @@ app.get("/AllUsers", (req, res) => {
   });
 });
 
-
+// All Jobs
 app.get("/AllJobs", (req, res) => {
   var resp = getJobs();
   resp.then((e) => {
     res.send(e);
   });
+});
+
+// All Jobs acc to Category
+app.post("/JobsAccToCategory", (req, res) => {
+  console.log("Jobs acc to category", req.body);
+  jobsAccToCategory(req, res);
 });
 
 

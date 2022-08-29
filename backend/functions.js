@@ -59,11 +59,25 @@ async function getData() {
     return response;
 }
 
-
+// All Jobs
 async function getJobs() {
     let collection = mongoResult.db("GoJobber").collection("Jobs");
     let response = await collection.find({}).toArray();
     return response;
+}
+
+
+// All Jobs acc to Category
+const jobsAccToCategory = async(req, res) => {
+    console.log("jobs acc to category", req.body.jobCategory)
+    let collection = mongoResult.db("GoJobber").collection("Jobs");
+
+        collection.find({ jobCategory: req.body.jobCategory }).toArray().then((result, err) => {
+            // console.log(result)
+            res.status(200).send({ result: result })
+            return
+        })
+
 }
 
 // Signup
@@ -172,4 +186,4 @@ const ContactForm = async(req, res) => {
 }
 
 
-module.exports = { Login, postData, loadMongoDb, getData, postJob, getJobs, findData, ContactForm }
+module.exports = { Login, postData, loadMongoDb, getData, postJob, getJobs, jobsAccToCategory, findData, ContactForm }

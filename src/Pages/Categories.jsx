@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect,useCallback } from "react";
 import "../App.css";
 import { Row, Col } from "react-bootstrap";
 import Computer from "../Assests/Computer.png";
@@ -13,14 +13,18 @@ import Painter from "../Assests/Painter.png";
 import Receptionist from "../Assests/Receptionist.png";
 import Reporter from "../Assests/Reporter.png";
 import Teacher from "../Assests/Teacher.png";
-import { Link } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 
 const Categories = () => {
+  const history = useHistory();
 
 const SelectCategory=(category)=>{
     localStorage.setItem("CATEGORY",category)
-    window.location.replace("/Job")
+    history.push("/Category/"+category);
+    // window.location.replace("/Category/"+category)
 }
+
+
 
   return (
     <div className="Container">
