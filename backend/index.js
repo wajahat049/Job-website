@@ -5,7 +5,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 const { MongoClient, ServerApiVersion } = require("mongodb");
-const{Login,loadMongoDb,getData,postData,postJob,getJobs,findData,ContactForm,jobsAccToCategory} = require("./functions.js")
+const{Login,loadMongoDb,getData,postData,postJob,getJobs,findData,ContactForm,jobsAccToCategory,SendAlerts} = require("./functions.js")
 
 loadMongoDb()
 
@@ -61,6 +61,13 @@ app.post("/FindJob", (req, res) => {
 // For ContactForm
 app.post("/ContactForm", (req, res) => {
   console.log("Form", req.body);
+  ContactForm(req, res);
+});
+
+
+// For Job Alerts
+app.post("/JobAlerts", (req, res) => {
+  console.log("JobAlerts", req.body);
   ContactForm(req, res);
 });
 

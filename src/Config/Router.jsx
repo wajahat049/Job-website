@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 import JobCard from "../Components/JobCard";
 import NavBar from "../Components/NavBar";
-
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 import Job from "../Pages/SingleJob";
@@ -34,13 +33,13 @@ class AppRouter extends Component {
   render() {
     return (
       <Router>
+      {console.log("USER INFO", this.props.userInfo)}
         {
           this.props.userInfo.email=="anonymous@gmail.com" ?
           
           <Route exact path="/" component={Authentication} />
         :
         <>
-      {console.log("USER INFO", this.props.userInfo)}
         <NavBar/>
           <Route exact path="/" component={Home} />
           <Route exact path="/Job" component={Job} />

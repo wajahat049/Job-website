@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const nodemailer = require('nodemailer');
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
@@ -80,8 +81,8 @@ const jobsAccToCategory = async(req, res) => {
 
 }
 
-// Signup
 
+// Signup
 const postData = async(req, res) => {
     let collection = mongoResult.db("GoJobber").collection("Users");
     collection.findOne({ email: req.body.email }).then((user, err) => {
@@ -140,7 +141,6 @@ const postJob = async(req, res) => {
 
 
 // FInd w.r.t Category and Location
-
 const findData = async(req, res) => {
     console.log("req", req.body.filterLocation, req.body.filterCategory)
     let collection = mongoResult.db("GoJobber").collection("Jobs");
@@ -172,8 +172,6 @@ const findData = async(req, res) => {
 
 
 // Contact Form
-
-
 const ContactForm = async(req, res) => {
     let collection = mongoResult.db("GoJobber").collection("ContactFormInfo");
     collection.insertOne({ email: req.body.email, name: req.body.name, mesage: req.body.message }, function(error, response) {
@@ -185,5 +183,32 @@ const ContactForm = async(req, res) => {
 
 }
 
+const SendAlerts = async(req, res) => {
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'wajjuwajahat13@gmail.com',
+          pass: '03162150074@'
+        }
+      });
+      
+      var mailOptions = {
+        from: 'wajjuwajahat13@gmail.com',
+        to: req.body.email,
+        subject: 'Alert for Jobs',
+        text: 'Daily Notifications will be send to you about the New Jobs'
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+}
 
-module.exports = { Login, postData, loadMongoDb, getData, postJob, getJobs, jobsAccToCategory, findData, ContactForm }
+
+
+
+module.exports = { Login, postData, loadMongoDb, getData, postJob, getJobs, jobsAccToCategory, findData, ContactForm, SendAlerts }
