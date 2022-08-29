@@ -8,7 +8,7 @@ import Modal from 'react-modal';
 import styled from "styled-components";
 import { AccountBox } from "../Components/accountBox";
 import JobLogo from "../Assests/myjoblogo.png"
-import Profile from "./Profile"
+import Profile from "../Pages/JobProfile";
 import {connect} from "react-redux"
 import { changeisuser } from '../Store/action';
 import { propTypes } from 'react-bootstrap/esm/Image';
@@ -64,11 +64,7 @@ const NavBar = (props) => {
     }
 
     function openModalProfile() {
-        setIsOpenProfile(!modalIsOpenProfile);
-    }
-
-    function closeModalProfile() {
-        setIsOpenProfile(false);
+        window.location.assign('http://localhost:3000/JobProfile')
     }
 
 
@@ -97,16 +93,6 @@ const NavBar = (props) => {
                     </Nav>
                     <Nav>
                         <button style={{marginRight:"15px",borderRadius:"5px"}} onClick={openModalProfile} className="IconButton"> <ImProfile style={style} className="icons" /> </button>
-
-                        <Modal
-                            isOpen={modalIsOpenProfile}
-                            // onAfterOpen={afterOpenModal}
-                            onRequestClose={closeModalProfile}
-                            style={customStyles}
-                            contentLabel="Example Modal"
-                        >
-                           <Profile/>
-                        </Modal>
 
                     </Nav>
                     <Nav>

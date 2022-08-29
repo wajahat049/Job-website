@@ -67,7 +67,7 @@ header {
 .icons {
     /* margin-right: 10px; */
     margin: 5px;
-    
+
 }
 
 
@@ -80,7 +80,7 @@ header {
     border-radius: 120px 0px 120px 0px;
     /* box-shadow: 1px 3px 5px 1px #cacad0; */
 
-    
+
     /* border-radius: 2%; */
 }
 
@@ -112,7 +112,8 @@ header {
     border-style: solid;
     border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
 }
-.IconButton:hover{
+
+.IconButton:hover {
     box-shadow: 1px 3px 5px 1px #ff9902;
 }
 
@@ -171,6 +172,7 @@ header {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -262,6 +264,7 @@ li:hover {
     margin: 15px;
     font-size: 17px !important;
 }
+
 .titleandsubtitles {
     font-size: 17px;
 }
@@ -272,89 +275,111 @@ li:hover {
         height: 10% !important;
         margin-left: 5% !important;
     }
+
     .titleandsubtitles {
         font-size: small;
     }
+
     .titleandsubtitles>.row>.col {
         /* font-size: small; */
         /* margin: 50 !important; */
         width: 120% !important;
-        
+
     }
+
     .HeaderText h1 {
         font-size: 40px !important;
     }
+
     header {
         height: 300px !important;
     }
+
     .JobCard {
         width: 90% !important;
         margin-bottom: 5% !important;
     }
+
     .Job-card-btn {
         /* height:30% !important; */
         width: 100%;
         margin: 10px;
         font-size: small !important;
     }
+
     .Job-time-card-btn {
         /* height:25% !important; */
         width: 100%;
         margin: 10px;
         font-size: 14px !important;
     }
+
     .ImgandDetail img {
         width: 100%;
     }
+
     .JobTitle-and-Button img {
         width: 100% !important;
     }
+
     .Summary {
         margin-left: 1% !important;
         width: 98%;
         margin-top: 5% !important;
         font-size: 90%;
     }
+
     .Share {
         margin-left: 1% !important;
         width: 98% !important;
         margin-top: 5% !important;
         font-size: 90%;
     }
+
     .Responsibilities ul {
         margin-left: 8% !important;
     }
+
     .EducationExperience ul {
         margin-left: 8% !important;
     }
+
     .OtherBenefits ul {
         margin-left: 8% !important;
     }
+
     .see-more-btn {
         width: 35% !important;
     }
+
     .category-img {
         width: 55% !important;
         height: 80% !important;
     }
+
     .category-row>.col {
         /* margin: 1%; */
         margin-bottom: 12% !important;
     }
+
     .post-form {
         margin-left: 8% !important;
         margin-right: 8% !important;
         margin-bottom: 10%;
     }
+
     .form-row>.col-sm-3 {
         margin-bottom: 5px !important;
     }
+
     .contact_form {
         margin: 3% 20% 3% 20% !important;
     }
+
     .BTN {
         width: 40% !important;
     }
+
     .Contact-Socialmedia>.col {
         /* margin: 2px !important; */
         /* padding: 0% !important; */
@@ -362,6 +387,7 @@ li:hover {
         width: 60% !important;
         margin-left: 0% !important;
     }
+
     .Contact-Icons-div {
         /* text-align: -webkit-center ; */
         margin-right: 15%;
@@ -731,7 +757,7 @@ border: 2px solid blue;
     padding: 0.005% 0% 1% 0%;
 }
 
-.postjob-fied{
+.postjob-fied {
     height: 52px;
     width: 100%;
     color: #707c88;
@@ -743,7 +769,7 @@ border: 2px solid blue;
     border: 2px solid #ff9902;
 }
 
-.postjob-desc_fied{
+.postjob-desc_fied {
     color: #707c88;
     font-weight: 400;
     font-size: 18px;
@@ -755,14 +781,14 @@ border: 2px solid blue;
     width: 100%;
 }
 
-.jobpost-title{
+.jobpost-title {
     color: #ff9902;
     font-weight: 400;
     font-size: 18px;
     margin-top: 20px;
 }
 
-.upload-logo{
+.upload-logo {
     border: 1px solid #ff9902;
     border-radius: 5px;
     background-color: #ff9902;
@@ -771,11 +797,27 @@ border: 2px solid blue;
 
 }
 
-.upload-logo:hover{
+.upload-logo:hover {
     border: 1px solid #ff9902;
     border-radius: 5px;
     background-color: #f1960d;
     color: white;
     padding: 5px 15px 5px 5px;
 
+}
+
+.JobProfile-heading {
+    color: #142050;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 25px;
+}
+
+.marginLeft{
+    margin-left: 25px !important;
+}
+
+.css-1x51dt5-MuiInputBase-input-MuiInput-input{
+    text-align: center;
+    color: #f1960d;
 }

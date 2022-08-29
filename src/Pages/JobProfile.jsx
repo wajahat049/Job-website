@@ -8,7 +8,11 @@ import ProfileImage from "../Assests/profile.png"
 import tick from "../Assests/tick.png"
 import "../App.css"
 import { Container, Row, Col, Form, Button } from "react-bootstrap"
-import { Link, useHistory } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom";
+import Switch from '@mui/material/Switch';
+import TextField from '@mui/material/TextField';
+import Input from '@mui/material/Input';
+
 
 export default function Profile(props) {
   const history = useHistory();
@@ -31,11 +35,11 @@ export default function Profile(props) {
           <Row style={{ textAlign: "center", justifyContent: "center", alignItems: "center" }}>
             <img style={{ width: "200px", height: "200px", marginBottom: "20px" }} src={ProfileImage} />
           </Row>
-          <Row style={{ textAlign: "center", justifyContent: "center", alignItems: "center" }}>
-            <p style={{ color: "#ff9902", fontWeight: "bold" }}>Wajahat Ahmed </p>
+          <Row>
+            <Input defaultValue={"Wajahat Ahmed"} color='warning'/>
           </Row>
-          <Row style={{ textAlign: "center", justifyContent: "center", alignItems: "center" }}>
-            <p style={{ color: "#ff9902", fontWeight: "bold" }}> wajahatahmed049@gmail.com </p>
+          <Row style={{marginBottom: "10px"}}>
+          <Input defaultValue={"wajahatahmed049@gmail.com"} color='warning'/>
           </Row>
           <Row >
             <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam eos soluta modi perspiciatis, dolorum ipsum, officia numquam tempore quibusdam debitis ullam exercitationem quasi, laboriosam eaque. Rerum nesciunt ea a quae? </p>
@@ -50,50 +54,114 @@ export default function Profile(props) {
         </Col>
 
 
-        <Col>
+        <Col style={{marginLeft:"50px"}}>
+          <Row style={{ marginBottom: "20px", }}>
+            <h5 className='JobProfile-heading'>BASIC INFORMATION</h5>
+          </Row>
+          <Row style={{margin: "5px 0px 20px 5px",}}>
+            <Col>
+              <Row style={{ marginBottom: "20px", }}>
+                <TextField
+                  label="Age"
+                  variant="standard"
+                  color="warning"
+                  focused
+                  defaultValue={20}
+                />
+              </Row>
+              <Row style={{ marginBottom: "20px", }}>
+                <TextField
+                  label="CNIC"
+                  variant="standard"
+                  color="warning"
+                  focused
+                  defaultValue={'200875359099'}
+                />
+              </Row>
+            </Col>
+
+            <Col>
+              <Row style={{ marginBottom: "20px", }} >
+                <TextField
+                  label="Year Of Experience"
+                  variant="standard"
+                  color="warning"
+                  focused
+                  defaultValue={3}
+                />
+              </Row>
+              <Row  >
+                <TextField
+                  label="Phone No."
+                  variant="standard"
+                  color="warning"
+                  focused
+                  defaultValue={'03206853380'}
+                />
+              </Row>
+            </Col>
+
+            <Col>
+              <Row style={{ marginBottom: "20px", }} >
+                <TextField
+                  label="Eduction"
+                  variant="standard"
+                  color="warning"
+                  focused
+                  defaultValue={'Bachlors'}
+                />
+              </Row>
+              <Row  >
+                <TextField
+                  label="Location"
+                  variant="standard"
+                  color="warning"
+                  focused
+                  defaultValue={'Karachi'}
+                />
+              </Row>
+            </Col>
+          </Row>
+
           <Row>
-            <h5 style={{ color: "#142050", fontWeight: "bold", marginBottom: "15px" , marginTop: "20px" }}>BASIC INFORMATION</h5>
+            <h5 className='JobProfile-heading'>EXPERIENCE</h5>
           </Row>
           <Row>
-            <Col>
-              <Row  >
-                <bold style={{ color: "grey" }}> Age </bold>
-                <p style={{ color: "black" }}>20 </p>
-              </Row>
-              <Row  >
-                <bold style={{ color: "grey" }}> CNIC </bold>
-                <p style={{ color: "black" }}>200875359099 </p>
-              </Row>
-            </Col>
-
-            <Col>
-              <Row  >
-                <bold style={{ color: "grey" }}> Education </bold>
-                <p style={{ color: "black" }}>Bachlors </p>
-              </Row>
-              <Row  >
-                <bold style={{ color: "grey" }}> Phone No. </bold>
-                <p style={{ color: "black" }}>200875359099 </p>
-              </Row>
-            </Col>
-
-            <Col>
-              <Row  >
-                <bold style={{ color: "grey" }}> Year Of Experience </bold>
-                <p style={{ color: "black" }}>4 </p>
-              </Row>
-              <Row  >
-                <bold style={{ color: "grey" }}> Location </bold>
-                <p style={{ color: "black" }}>Karachi </p>
-              </Row>
-            </Col>
+            <p style={{ color: "#ff9902", fontWeight: "bold" }}> <img style={{ width: "20px", height: "20px", }} src={tick} />  React Developer
+              <span style={{ color: "gray", fontWeight: "normal", fontSize: "14px" }}>
+                <p className='marginLeft'>Apr 2022 - Aug 2022</p>
+              </span>
+            </p>
+          </Row>
+          <Row>
+            <p style={{ color: "#ff9902", fontWeight: "bold" }}> <img style={{ width: "20px", height: "20px", }} src={tick} />  React Developer
+              <span style={{ color: "gray", fontWeight: "normal", fontSize: "14px" }}>
+                <p className='marginLeft'>Apr 2022 - Aug 2022</p>
+              </span>
+            </p>
+          </Row>
+          <Row>
+            <p style={{ color: "#ff9902", fontWeight: "bold" }}> <img style={{ width: "20px", height: "20px", }} src={tick} />  React Developer
+              <span style={{ color: "gray", fontWeight: "normal", fontSize: "14px" }}>
+                <p className='marginLeft'>Apr 2022 - Aug 2022</p>
+              </span>
+            </p>
+          </Row>
+          <Row>
+            <p style={{ color: "#ff9902", fontWeight: "bold" }}> <img style={{ width: "20px", height: "20px", }} src={tick} />  React Developer
+              <span style={{ color: "gray", fontWeight: "normal", fontSize: "14px" }}>
+                <p className='marginLeft'>Apr 2022 - Aug 2022</p>
+              </span>
+            </p>
           </Row>
 
-          <Row>
-          <h5 style={{ color: "#142050", fontWeight: "bold", marginBottom: "15px", marginTop: "20px" }}>EXPERIENCE</h5>
+          <Row style={{ marginBottom: "50px" }}>
+            <h5 className='JobProfile-heading'>Allow for Job notification</h5>
+            <Switch color="warning" />
           </Row>
 
         </Col>
+
       </Row>
 
 

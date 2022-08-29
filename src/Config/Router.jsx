@@ -35,7 +35,7 @@ class AppRouter extends Component {
     return (
       <Router>
         {
-          this.props.userinfo.email=="anonymous@gmail.com" ?
+          this.props.userInfo.email=="anonymous@gmail.com" ?
           
           <Route exact path="/" component={Authentication} />
         :
