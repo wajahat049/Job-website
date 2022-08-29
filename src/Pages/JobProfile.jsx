@@ -3,7 +3,10 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import { MdWork, MdLocationPin, MdAccessTimeFilled, MdPaid } from 'react-icons/md'
+import { MdWork, MdLocationPin, MdAccessTimeFilled, MdPaid,MdAddCircle,MdAddBox,MdAdd } from 'react-icons/md'
+import {BiMessageRoundedAdd } from 'react-icons/bi'
+
+// import { IoIosAddCircle } from 'react-icons/io'
 import ProfileImage from "../Assests/profile.png"
 import tick from "../Assests/tick.png"
 import "../App.css"
@@ -17,6 +20,7 @@ import Input from '@mui/material/Input';
 export default function Profile(props) {
   const history = useHistory();
   const [user, setUser] = React.useState({ name: "anonymous", email: "anonymous123@gmail.com" })
+  const [addExperience, setAddExperience] = React.useState(false)
 
   React.useEffect(() => {
     if (JSON.parse(localStorage.getItem("USER"))) {
@@ -124,7 +128,30 @@ export default function Profile(props) {
           </Row>
 
           <Row>
+            <Col sm={4}>
             <h5 className='JobProfile-heading'>EXPERIENCE</h5>
+            </Col>
+            <Col sm={4}>
+            <BiMessageRoundedAdd onClick={()=>setAddExperience(!addExperience)} color='#ff9902' size={30} style={{marginTop:"16%",marginLeft:"-10%"}}/>
+            </Col>
+          </Row>
+          <Row>
+          {
+            addExperience ? 
+            <Row>
+              <Col sm={6}>
+            <input className='profile-field'  required onChange={(e) => console.log(e.target.value)}  type="text" placeholder='Enter Job Title' />
+            </Col>
+            <Col sm={6}>
+            <input className='profile-field'  required onChange={(e) => console.log(e.target.value)}  type="date" />{" "} to {"  "}
+            <input className='profile-field'  required onChange={(e) => console.log(e.target.value)}  type="date" />
+            </Col>
+            <Col>
+            <Button style={{marginBottom:"5%",padding:"3px 15px 3px 15px",marginTop:"-10%"}}>Add</Button>
+            </Col>
+            </Row>
+            :null
+          }
           </Row>
           <Row>
             <p style={{ color: "#ff9902", fontWeight: "bold" }}> <img style={{ width: "20px", height: "20px", }} src={tick} />  React Developer
@@ -154,6 +181,8 @@ export default function Profile(props) {
               </span>
             </p>
           </Row>
+          
+        
 
           <Row style={{ marginBottom: "50px" }}>
             <h5 className='JobProfile-heading'>Allow for Job notification</h5>

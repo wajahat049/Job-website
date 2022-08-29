@@ -12,6 +12,7 @@ import Profile from "../Pages/JobProfile";
 import {connect} from "react-redux"
 import { changeisuser } from '../Store/action';
 import { propTypes } from 'react-bootstrap/esm/Image';
+import { Link,useHistory } from "react-router-dom";
 
 const customStyles = {
     content: {
@@ -50,6 +51,7 @@ const AppContainer = styled.div`
 
 
 const NavBar = (props) => {
+    const history = useHistory();
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [modalIsOpenProfile, setIsOpenProfile] = React.useState(false);
 
@@ -92,7 +94,8 @@ const NavBar = (props) => {
                         }
                     </Nav>
                     <Nav>
-                        <button style={{marginRight:"15px",borderRadius:"5px"}} onClick={openModalProfile} className="IconButton"> <ImProfile style={style} className="icons" /> </button>
+                        <button style={{marginRight:"15px",borderRadius:"5px"}} onClick={()=> history.push("/JobProfile")} 
+className="IconButton"> <ImProfile style={style} className="icons" /> </button>
 
                     </Nav>
                     <Nav>

@@ -19,7 +19,7 @@ const Categories = () => {
   const history = useHistory();
 
 const SelectCategory=(category)=>{
-    localStorage.setItem("CATEGORY",category)
+    // localStorage.setItem("CATEGORY",category)
     history.push("/Category/"+category);
     // window.location.replace("/Category/"+category)
 }
