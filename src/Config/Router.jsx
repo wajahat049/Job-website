@@ -22,6 +22,7 @@ import JobList from "../Pages/JobList";
 import Authentication from "../Pages/Authentication";
 import {connect} from "react-redux"
 import Category from "../Pages/Category";
+import JobProfile from "../Pages/JobProfile";
 
 
 
@@ -49,6 +50,7 @@ class AppRouter extends Component {
           <Route exact path="/Categories" component={Categories} />
           <Route exact path="/JobPost" component={JobPost} />
           <Route exact path="/AllJobs" component={JobList} />
+          <Route exact path="/JobProfile" component={JobProfile} />
           <Route exact path="/Category/:id" component={Category} />
           <Footer/>
           </>
