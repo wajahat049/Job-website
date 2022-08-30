@@ -60,6 +60,36 @@ async function getData() {
     return response;
 }
 
+//get User Profile
+const UserProfile = async(req, res) => {
+    console.log("User Profile", req.body.email)
+    let collection = mongoResult.db("GoJobber").collection("Users");
+        collection.find({ email: req.body.email }).toArray().then((result, err) => {
+            // console.log(result)
+            res.status(200).send({ result: result })
+            return
+        })
+
+}
+
+// Edit User Profile
+const editUserProfile = async(req, res) => {
+    console.log("profile", req.body.email)
+    let collection = mongoResult.db("GoJobber").collection("Users");
+    var newvalues = { $set: {email: req.body.email, name:req.body.name, age:req.body.age,
+        yearsOfExperience:req.body.yearsOfExperience, education:req.body.education, cnic:req.body.cnic, 
+        phoneNo:req.body.phoneNo, location:req.body.location, experience:req.body.experience,
+        about:req.body.about,  skills:req.body.skills, allowAlerts:req.body.allowAlerts
+    } };
+        collection.updateOne({ email: req.body.email },newvalues,(result, err) => {
+            if (!err){
+            res.status(200).send({ message: "Profile Updated" })
+            return
+            }
+        })
+
+}
+
 // All Jobs
 async function getJobs() {
     let collection = mongoResult.db("GoJobber").collection("Jobs");
@@ -211,4 +241,4 @@ const SendAlerts = async(req, res) => {
 
 
 
-module.exports = { Login, postData, loadMongoDb, getData, postJob, getJobs, jobsAccToCategory, findData, ContactForm, SendAlerts }
+module.exports = { Login, postData, loadMongoDb, getData, postJob, getJobs, jobsAccToCategory, findData, ContactForm, SendAlerts, editUserProfile, UserProfile }
