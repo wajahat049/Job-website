@@ -19,7 +19,7 @@ import Categories from "../Pages/Categories";
 import JobPost from "../Pages/JobPost";
 import JobList from "../Pages/JobList";
 import Authentication from "../Pages/Authentication";
-import {connect} from "react-redux"
+import {connect} from "react-redux";
 import Category from "../Pages/Category";
 import JobProfile from "../Pages/JobProfile";
 
