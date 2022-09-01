@@ -135,7 +135,7 @@ function Profile(props) {
         <Col sm={11}>
           <h3 className='about-heading'>PROFILE</h3>
         </Col>
-        <Col sm={1} style={{ justifyContent: "right", alignItems: "right", textAlign: "right", }}>
+        <Col className='profileJob-gape' sm={1}>
           <Button onClick={() => updateChanges()} style={{ marginTop: "50%", padding: "3px 15px 3px 15px", backgroundColor: "#142050", border: "2px solid #142050" }}>Save</Button>
         </Col>
       </Row>

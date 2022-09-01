@@ -270,6 +270,17 @@ li:hover {
 }
 
 @media only screen and (max-width: 600px) {
+    .marginProfBtn {
+        margin-right: 0px !important;
+        border-radius: 5px 
+    }
+    
+    .profileJob-gape {
+        justify-content: right;
+        text-align: right;
+        margin-top: -200px !important;
+    }
+
     .Job-Image {
         width: 50% !important;
         height: 10% !important;
@@ -825,11 +836,16 @@ border: 2px solid blue;
     margin-top: 25px;
 }
 
-.marginLeft{
+.marginLeft {
     margin-left: 25px !important;
 }
 
-.css-1x51dt5-MuiInputBase-input-MuiInput-input{
+.css-1x51dt5-MuiInputBase-input-MuiInput-input {
     text-align: center;
     color: #f1960d;
+}
+
+.marginProfBtn {
+    margin-right: 15px;
+    border-radius: 5px 
 }
