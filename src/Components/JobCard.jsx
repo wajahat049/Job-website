@@ -20,7 +20,7 @@ const GoToJob=()=>{
     jobVacancies:props.jobVacancies,companyLocation:props.companyLocation,jobLocation:props.jobLocation,jobType:props.jobType,
     jobTimings:props.jobTimings,jobSalary:props.jobSalary,jobGender:props.jobGender
   }))
-  window.location.replace("/Job")
+  history.push("/Job")
 }
 
 

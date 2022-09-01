@@ -40,12 +40,12 @@ const Login = async(req, res) => {
                 res.status(400).send({ message: "Successfully Login", variant: "success" });
                 console.log("Successfully Login")
             } else {
-                res.status(400).send({ message: "Incorrect Password", variant: "danger" });
+                res.status(400).send({ message: "Incorrect Password", variant: "error" });
                 console.log("Incorrect Password")
             }
             return;
         } else {
-            res.status(400).send({ message: "Incorrect Email", variant: "danger" });
+            res.status(400).send({ message: "Incorrect Email", variant: "error" });
             console.log("Incorrect Email")
             return;
         }
@@ -238,7 +238,29 @@ const SendAlerts = async(req, res) => {
       });
 }
 
+const UpdateAlert = async(req, res) => {
+    let collection = mongoResult.db("GoJobber").collection("Users");
+    collection.updateOne({ email: req.body.email },{ $set: {allowAlerts: req.body.allowAlerts}},(result, err) => {
+        res.status(200).send({ message: "Alert Updated" })
+        return
+        
+    })
+}
+
+// Statistics
+async function getStatistics() {
+    let companieslist=[];
+    let collection = mongoResult.db("GoJobber").collection("Users");
+    let user = await collection.find({}).toArray()
+    let collection2 = mongoResult.db("GoJobber").collection("Jobs");
+    let jobs = await collection2.find({}).toArray()
+    jobs.map((e)=>{
+        companieslist.push(e.companyName)
+    })
+    let companies = [...new Set(companieslist)]
+    return {candidates:user.length,jobs:jobs.length,companies:companies.length};
+}
 
 
 
-module.exports = { Login, postData, loadMongoDb, getData, postJob, getJobs, jobsAccToCategory, findData, ContactForm, SendAlerts, editUserProfile, UserProfile }
+module.exports = { Login, postData, loadMongoDb, getData, postJob, getJobs, jobsAccToCategory, findData, ContactForm, SendAlerts, UpdateAlert, editUserProfile, UserProfile, getStatistics }

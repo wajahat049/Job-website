@@ -28,8 +28,15 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 function Profile(props) {
   const history = useHistory();
   const [user, setUser] = React.useState({ name: "anonymous", email: "anonymous123@gmail.com" })
+
   const [addExperience, setAddExperience] = React.useState(false);
+  const [addExperienceName, setAddExperienceName] = React.useState("");
+  const [addExperienceStartDate, setAddExperienceStartDate] = React.useState("");
+  const [addExperienceEndDate, setAddExperienceEndDate] = React.useState("");
+
   const [addSkill, setAddSkill] = React.useState(false);
+  const [addSkillName, setAddSkillName] = React.useState("");
+
 
 
   var userInfo = props.userInfo;
@@ -47,6 +54,7 @@ function Profile(props) {
   const [skills, setSkill] = React.useState([]);
   const [about, setAbout] = React.useState("");
   const [cnic, setCNIC] = React.useState("");
+  const [alertToggle, setAlertToggle] = React.useState(false);
 
 
   const [open, setOpen] = React.useState(false);
@@ -86,6 +94,7 @@ function Profile(props) {
         setYearsOfExperience(data.result[0].yearsOfExperience)
         setExperience(data.result[0].experience)
         setSkill(data.result[0].skills)
+        setAlertToggle(data.result[0].allowAlerts)
       }
       );
   }
@@ -96,6 +105,7 @@ function Profile(props) {
   }, [])
 
   function updateChanges() {
+    console.log("SKILLS",skills)
     fetch('http://localhost:8001/EditProfile', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -106,8 +116,10 @@ function Profile(props) {
         console.log("updated data", data)
       }
       );
+    setTimeout(()=>{
     setOpen(true);
     getProfile();
+    },2000)
   }
 
 
@@ -156,10 +168,15 @@ function Profile(props) {
               addSkill ?
                 <Row>
                   <Col sm={6}>
-                    <input className='profile-field' onChange={(e) => setAddSkill(e.target.value)} type="text" placeholder='Enter Job Title' />
+                    <input className='profile-field' onChange={(e) => setAddSkillName(e.target.value)} type="text" placeholder='Enter Job Title' />
                   </Col>
                   <Col sm={6}>
-                    <Button style={{ marginBottom: "5%", padding: "3px 15px 3px 15px", backgroundColor: "#142050", border: "2px solid #142050" }}>Add</Button>
+                    <Button onClick={()=>{
+                      if(addSkillName!=""){
+                      setSkill(oldArray => [addSkillName,...oldArray] )
+                      setAddSkillName("")
+                      }
+                    }} style={{ marginBottom: "5%", padding: "3px 15px 3px 15px", backgroundColor: "#142050", border: "2px solid #142050" }}>Add</Button>
                   </Col>
                 </Row>
                 : null
@@ -272,14 +289,21 @@ function Profile(props) {
                 <Row>
                   <Col sm={6}>
                     <input className='profile-field' required
-                      onChange={(e) => setExperience(e.target.value)} type="text" placeholder='Enter Job Title' />
+                      onChange={(e) => setAddExperienceName(e.target.value)} type="text" placeholder='Enter Job Title' />
                   </Col>
                   <Col sm={6}>
-                    <input className='profile-field' required onChange={(e) => console.log(e.target.value)} type="date" />{" "} to {"  "}
-                    <input className='profile-field' required onChange={(e) => console.log(e.target.value)} type="date" />
+                    <input forma className='profile-field' required onChange={(e) => setAddExperienceStartDate(e.target.value)} type="date" />{" "} to {"  "}
+                    <input className='profile-field' required onChange={(e) => setAddExperienceEndDate(e.target.value)} type="date" />
                   </Col>
                   <Col>
-                    <Button style={{ marginBottom: "5%", padding: "3px 15px 3px 15px", marginTop: "-10%", backgroundColor: "#142050", border: "2px solid #142050" }}>Add</Button>
+                    <Button onClick={()=>{
+                      if(addExperienceName!="" && addExperienceStartDate!="" && addExperienceEndDate!=""){
+                        setExperience(oldArray => [{addExperienceName,addExperienceStartDate,addExperienceEndDate},...oldArray] )
+                      setAddExperienceName("")
+                      setAddExperienceStartDate("")
+                      setAddExperienceEndDate("")
+                      }
+                    }} style={{ marginBottom: "5%", padding: "3px 15px 3px 15px", marginTop: "-10%", backgroundColor: "#142050", border: "2px solid #142050" }}>Add</Button>
                   </Col>
                 </Row>
                 : null
@@ -290,9 +314,9 @@ function Profile(props) {
               experience.length != 0 ?
                 experience.map((e) => {
                   return (
-                    <p style={{ color: "#ff9902", fontWeight: "bold" }}> <img style={{ width: "20px", height: "20px", }} src={tick} />  {e.name}
+                    <p style={{ color: "#ff9902", fontWeight: "bold" }}> <img style={{ width: "20px", height: "20px", }} src={tick} />  {e.addExperienceName}
                       <span style={{ color: "gray", fontWeight: "normal", fontSize: "14px" }}>
-                        <p className='marginLeft'>{e.startDate} - {e.endDate}</p>
+                        <p className='marginLeft'>{e.addExperienceStartDate} - {e.addExperienceEndDate}</p>
                       </span>
                     </p>
                   )
@@ -306,7 +330,7 @@ function Profile(props) {
 
           <Row style={{ marginBottom: "50px", marginTop: "30px" }}>
             <h5 className='JobProfile-heading'>Allow for Job notification</h5>
-            <Switch color="warning" />
+            <Switch checked={alertToggle} onChange={(e)=>{setAlertToggle(!alertToggle)}}  color="warning" />
           </Row>
 
         </Col>

@@ -7,6 +7,7 @@ import facebook from 'react-useanimations/lib/facebook'
 import twitter from 'react-useanimations/lib/twitter'
 import instagram from 'react-useanimations/lib/instagram'
 import linkedin from 'react-useanimations/lib/linkedin'
+import {Link} from "react-router-dom"
 export default function Footer() {
   return (
     <Container fluid className="Footer">
@@ -15,11 +16,12 @@ export default function Footer() {
           <div  >
               <h2>Top Categories</h2>
           <ul>
-  <li >Computer Engineer</li>
-  <li>Teacher</li>
-  <li>Business</li>
-  <li>Doctor</li>
-  <li>Receptionist</li>
+  <Link to="/Category/Computer Engineer" style={{textDecoration:"none",color:"white"}} ><li >Computer Engineer</li></Link>
+  <Link to="/Category/Teacher" style={{textDecoration:"none",color:"white"}} ><li >Teacher</li></Link>
+  <Link to="/Category/Business" style={{textDecoration:"none",color:"white"}} ><li >Business</li></Link>
+  <Link to="/Category/Engineer" style={{textDecoration:"none",color:"white"}} ><li >Engineer</li></Link>
+
+
 
 
 </ul>

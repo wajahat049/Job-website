@@ -67,7 +67,12 @@ for (let number = 0; number <= 9; number++) {
      
       {/* <div> */}
       <Row style={{marginTop:"5%",marginBottom:"5%"}}>
+        {console.log("ALL JOBS",allJobs.length)}
+        {
+          allJobs.length>=6?
       <Pagination onChange={(e)=>{console.log("e",e)}} size={paginationSize}>{items}</Pagination>
+:null
+        }
 </Row>
       {/* </div> */}
     </div>
