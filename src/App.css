@@ -270,11 +270,18 @@ li:hover {
 }
 
 @media only screen and (max-width: 600px) {
+    .Contact-Socialmedia {
+        margin-top: 8% !important;
+        width: 150% !important;
+        margin-bottom: 10% !important;
+        margin-left: -20% !important;
+    }
+
     .marginProfBtn {
         margin-right: 0px !important;
-        border-radius: 5px 
+        border-radius: 5px
     }
-    
+
     .profileJob-gape {
         justify-content: right;
         text-align: right;
@@ -860,5 +867,5 @@ border: 2px solid blue;
 
 .marginProfBtn {
     margin-right: 15px;
-    border-radius: 5px 
+    border-radius: 5px
 }
