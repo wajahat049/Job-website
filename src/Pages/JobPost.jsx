@@ -3,57 +3,99 @@ import '../App.css';
 import { Form, Button, Row, Col } from "react-bootstrap"
 import { storage } from '../Config/FirebaseConfig';
 import { ref, getDownloadURL, uploadBytesResumable } from "@firebase/storage";
-
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const JobPost = () => {
 
     const [jobTitle, setJobTitle] = useState("")
     const [jobDescription, setJobDescription] = useState("")
-    const [jobLocation, setJobLocation] = useState("")
+    const [jobLocation, setJobLocation] = useState("Karachi")
     const [jobStartTimings, setjobStartTimings] = useState("")
     const [jobEndTimings, setjobEndTimings] = useState("")
     const [jobTimings, setJobTimings] = useState("")
-    const [jobType, setJobType] = useState("")
-    const [jobCategory, setJobCategory] = useState("")
+    const [jobType, setJobType] = useState("Full Time")
+    const [jobCategory, setJobCategory] = useState("Engineer")
     const [jobRequirements, setJobRequirements] = useState("")
-    const [jobEducation, setJobEducation] = useState("")
-    const [jobExperience, setJobExperience] = useState("")
+    const [jobEducation, setJobEducation] = useState("Matric Pass")
+    const [jobExperience, setJobExperience] = useState("No Experience")
     const [jobVacancies, setJobVacancies] = useState("")
     const [jobSalary, setjobSalary] = useState(0)
     const [jobStartSalary, setjobStartSalary] = useState(0)
     const [jobEndSalary, setjobEndSalary] = useState(0)
-    const [jobGender, setjobGender] = useState("")
+    const [jobGender, setjobGender] = useState("Any")
 
     const [companyName, setCompanyName] = useState("")
     const [companyDescription, setCompanyDescription] = useState("")
-    const [companyLocation, setCompanyLocation] = useState("")
+    const [companyLocation, setCompanyLocation] = useState("Karachi")
     const [companyWebsite, setCompanyWebsite] = useState("")
     const [companyLogo, setCompanyLogo] = useState("")
 
     const [fieldSize, setFieldSize] = useState(60)
     const [disableBtn, setdisableBtn] = useState(true)
 
+    // For Message
+    const [msg, setMsg] = useState("");
+    const [variant, setvariant] = useState("");
+
+     // For SnackBar
+    const [open, setOpen] = React.useState(false);
+
+    const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+    };
+
+    const save=(data)=>{
+        setMsg(data.message)
+        setvariant(data.variant)
+        setOpen(true)
+        if(data.message == "Successfully Post"){
+          setJobTitle("")
+          setJobDescription("")
+          setJobLocation("")
+          setJobCategory("")
+          setJobEducation("")
+          setJobExperience("")
+          setJobTimings("")
+          setJobType("")
+          setJobRequirements("")
+          setJobVacancies("")
+          setjobSalary(0)
+          setjobStartSalary(0)
+          setjobEndSalary(0)
+          setjobGender("")
+          setjobStartTimings("")
+          setjobEndTimings("")
+
+          setCompanyName("")
+          setCompanyDescription("")
+          setCompanyLocation("")
+          setCompanyLogo("")
+          setCompanyWebsite("")
+        }
+        }
 
     useEffect(() => {
-        console.log("JOB SALARY", jobTitle, "-", jobDescription, "-", jobLocation, "-", jobTimings, "-", jobType, "-", jobCategory, "-",
-            jobEducation, "-", jobExperience, "-", jobVacancies, "-", companyName, "-", companyLocation, "-", companyWebsite, "-", companyDescription, "-", companyLogo, "-"
-            , jobStartTimings, "-", jobEndTimings, "-", jobStartSalary, "-", jobEndSalary, "-", jobSalary, "-", jobGender)
         if (jobStartTimings != "" && jobEndTimings != "") {
             setJobTimings(jobStartTimings + " - " + jobEndTimings)
         }
-
         if (jobStartSalary != 0 && jobEndSalary != 0) {
             console.log("JOB SALARY", "RS:" + jobStartSalary + " - " + "RS:" + jobEndSalary)
             setjobSalary("RS:" + jobStartSalary + " - " + "RS:" + jobEndSalary)
         }
         if (window.screen.width < 600) {
             setFieldSize(35)
-
         }
 
         if (jobTitle != "" && jobDescription != "" && jobLocation != "" && jobTimings != "" && jobType != ""
             && jobCategory != "" && jobEducation != "" && jobExperience != "" && jobRequirements != "" && jobVacancies != "" && companyName != "" && companyDescription != ""
-            && companyLogo != "" && companyLocation != "" && companyWebsite != "" && jobStartTimings != "" && jobEndTimings != "" && jobSalary != "" && jobGender != "") {
+            && companyLogo != "" && companyLocation != "" && companyWebsite != "" && jobStartTimings != "" && jobEndTimings != "" && jobSalary != "" && jobGender != "" && jobSalary !="") {
             setdisableBtn(false)
         }
     }, [window.screen.width, jobTitle, jobDescription, jobLocation, jobTimings, jobType, jobCategory,
@@ -62,14 +104,10 @@ const JobPost = () => {
 
     const SubmitJob = (event) => {
 
-        //     console.log("JOB",jobTitle, jobDescription,jobLocation,jobTimings,jobType,jobCategory,
-        //     jobEducation,jobExperience,jobVacancies,companyName,companyLocation,companyWebsite,companyDescription,companyLogo
-        // )
         event.preventDefault()
         if (jobTitle != "" && jobDescription != "" && jobLocation != "" && jobTimings != "" && jobType != ""
             && jobCategory != "" && jobEducation != "" && jobExperience != "" && jobRequirements != "" && jobVacancies != "" && companyName != "" && companyDescription != ""
             && companyLogo != "" && companyLocation != "" && companyWebsite != "" && jobSalary != "" && jobGender != "") {
-            // console.log(email, pass)
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -81,7 +119,7 @@ const JobPost = () => {
             // setShow(true)
             fetch(process.env.REACT_APP_BASE_URL+'/PostJob', requestOptions)
                 .then(response => response.json())
-                .then(data => console.log(data));
+                .then(data => save(data));
         }
         else {
             console.log("FILL ALL")
@@ -126,6 +164,11 @@ const JobPost = () => {
 
     return (
         <div className='Container job-post jobPost_bg'>
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity={variant} sx={{ width: '100%' }}>
+          {msg}
+        </Alert>
+      </Snackbar>
             <div className='Container '>
                 {/* <header>
                 <div className='HeaderText'>
@@ -169,7 +212,7 @@ const JobPost = () => {
                         JOB LOCATION
                     </Col>
                     <Col sm={9}>
-                        <select className='Select postjob-fied' required onChange={(e) => setJobLocation(e.target.value)} name="cars" id="cars">
+                        <select className='Select postjob-fied' required onChange={(e) => setJobLocation(e.target.value)} >
                             <option value="Karachi">Karachi</option>
                             <option value="Islamabad">Islamabad</option>
                             <option value="Lahore">Lahore</option>
@@ -210,7 +253,7 @@ const JobPost = () => {
                         JOB CATEGORY
                     </Col>
                     <Col sm={9}>
-                        <select defaultValue={"Engineer"} className='Select postjob-fied' required onChange={(e) => setJobCategory(e.target.value)} name="cars" id="cars">
+                        <select defaultValue={"Engineer"} className='Select postjob-fied' required onChange={(e) => setJobCategory(e.target.value)} >
                             <option value="Engineer">Engineer</option>
                             <option value="Computer Engineer">Computer Engineer</option>
                             <option value="Doctor">Doctor</option>
@@ -243,7 +286,7 @@ const JobPost = () => {
                         EDUCATION
                     </Col>
                     <Col sm={9}>
-                        <select defaultValue={"Matric Pass"} className='Select postjob-fied' required onChange={(e) => setJobEducation(e.target.value)} name="cars" id="cars">
+                        <select defaultValue={"Matric Pass"} className='Select postjob-fied' required onChange={(e) => setJobEducation(e.target.value)}>
                             <option value="Matric Pass">Matric Pass</option>
                             <option value="Intermediate Pass">Intermediate Pass</option>
                             <option value="Undergraduate">Undergraduate</option>
@@ -259,7 +302,7 @@ const JobPost = () => {
                         EXPERIENCE
                     </Col>
                     <Col sm={9}>
-                        <select defaultValue={"No Experience"} className='Select postjob-fied' required onChange={(e) => setJobExperience(e.target.value)} name="cars" id="cars">
+                        <select defaultValue={"No Experience"} className='Select postjob-fied' required onChange={(e) => setJobExperience(e.target.value)} >
                             <option value="No Experience">No Experience</option>
                             <option value="less than a year">less than a year</option>
                             <option value="more than a year">more than a year</option>
