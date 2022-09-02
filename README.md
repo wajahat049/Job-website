@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# GO-JOBBER
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Go-Jobber is a job search Website which built on **REACT JS** and **MONGODB** and deploy on **Heroku**.
 
-## Available Scripts
+## DESCRIPTION
+Go-Jobber website consists of the following pages:
+1.	**Home**
+2.	**About**
+3.	**Contact**
+4.	**Categories**
+5.	**Job Search**
+6.	**Job Post**
+7.	**Profile**
+8.	**Login / Signup**
+9.	**Apply Job**
 
-In the project directory, you can run:
 
-### `yarn start`
+# FRONTEND:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Login/Signup Screen:
+This is the Login and Signup screen, after successfully signin it navigates the home screen.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![image](https://user-images.githubusercontent.com/64039135/188195776-19b39377-1bec-4016-adac-8bf0930ea664.png)
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Home Screen:
+It displays the job statistics and all recent jobs
 
-### `yarn build`
+![image](https://user-images.githubusercontent.com/64039135/187977590-066b01d0-10b8-4115-9385-e52551d4e9f6.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## About Screen:
+It displays the about of Go-jobber
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![image](https://user-images.githubusercontent.com/64039135/187978174-24bf2cf1-71a6-48de-9b58-d4fc86398ae9.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contact Screen:
+Anyone can easily contact through this page after submit contact form.
 
-### `yarn eject`
+![image](https://user-images.githubusercontent.com/64039135/187978646-ed667225-f5e1-454a-ad07-ab018d56d6cc.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Categories Screen:
+It shows all the categories of job which job seeker need
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![image](https://user-images.githubusercontent.com/64039135/187979231-e39c1467-556e-4b0a-bb88-e176f33dd1ec.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+After click any category, display all the jobs
 
-## Learn More
+![image](https://user-images.githubusercontent.com/64039135/187979726-1e7fce5e-f2f1-4963-85c9-d11d9296f0ef.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Apply Job:
+After click the button of apply job, all job description, requirements and experience shows
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![image](https://user-images.githubusercontent.com/64039135/187980630-42c9118a-d66a-472d-9a9f-c3b935433724.png)
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Job Search:
+Here we can easily search job
 
-### Analyzing the Bundle Size
+![image](https://user-images.githubusercontent.com/64039135/188197939-1b99d7fb-d6e0-4925-b9f0-73aa85fd4239.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## Job Post:
+Here we can easily post a job
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![image](https://user-images.githubusercontent.com/64039135/188201485-eda765af-63d6-4898-b1a0-996af4ef473f.png)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Profile:
+This is the profile of a user
 
-### Deployment
+![image](https://user-images.githubusercontent.com/64039135/187983571-6c658e66-3cd9-45dc-a395-d715fbce763c.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
