@@ -22,12 +22,12 @@ function Home(props) {
 
 
   useEffect(() => {
-    console.log("USER",props.userInfo)
-    fetch('http://localhost:8001/AllJobs')
+    console.log("USER",props.userInfo,process.env.REACT_APP_BASE_URL+'/AllJobs')
+    fetch(process.env.REACT_APP_BASE_URL+'/AllJobs')
       .then(response => response.json())
       .then(data => setAllJobs(data));
 
-      fetch('http://localhost:8001/Statistics')
+      fetch(process.env.REACT_APP_BASE_URL+'/Statistics')
       .then(response => response.json())
       .then(data => {
         console.log("STATS",data)

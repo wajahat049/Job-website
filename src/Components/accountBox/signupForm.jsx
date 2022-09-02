@@ -58,7 +58,7 @@ const save=(data)=>{
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name,email,pass })
   };
-  fetch('http://localhost:8001/CreateUser', requestOptions)
+  fetch(process.env.REACT_APP_BASE_URL+'/CreateUser', requestOptions)
   .then(response => response.json())
       .then(data => save(data));
 

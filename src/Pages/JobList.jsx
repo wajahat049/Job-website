@@ -25,7 +25,7 @@ function JobList() {
 
 
       useEffect(()=>{
-        fetch('http://localhost:8001/AllJobs')
+        fetch(process.env.REACT_APP_BASE_URL+'/AllJobs')
         .then(response => response.json())
         .then(data =>setAllJobs(data) );
     

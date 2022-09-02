@@ -403,6 +403,19 @@ li:hover {
         /* text-align: -webkit-center ; */
         margin-right: 15%;
     }
+
+   .SearchBox>.row{
+    margin-left: 12%!important;
+   }
+   .SearchBox {
+    width: 60%;
+   } 
+   .SearchBox>.row>.col-sm-10{
+    width: 90%;
+   }
+   .search-btn {
+    width: 50% !important
+}
 }
 
 .JobCard .row .col .row {

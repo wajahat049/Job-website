@@ -13,7 +13,7 @@ function JobSearch() {
 
 
   useEffect(()=>{
-    fetch('http://localhost:8001/AllJobs')
+    fetch(process.env.REACT_APP_BASE_URL+'/AllJobs')
     .then(response => response.json())
     .then(data =>setAllJobs(data) )
 
@@ -32,7 +32,7 @@ if(filterLocation!="All Location"){
   // setAllJobsFilter(allJobs.filter((item)=>
   //   item.jobLocation == filterLocation
   // ))
-  fetch('http://localhost:8001/FindJob', {
+  fetch(process.env.REACT_APP_BASE_URL+'/FindJob', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({filterLocation})
@@ -46,7 +46,7 @@ if(filterCategory!="All Category"){
 //   setAllJobsFilter(allJobs.filter((item)=>
 //   item.jobCategory == filterCategory
 // ))
-  fetch('http://localhost:8001/FindJob', {
+  fetch(process.env.REACT_APP_BASE_URL+'/FindJob', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({filterCategory})
@@ -60,7 +60,7 @@ if(filterCategory!="All Category" && filterLocation!="All Location"){
   //   setAllJobsFilter(allJobs.filter((item)=>
   //   item.jobCategory == filterCategory
   // ))
-    fetch('http://localhost:8001/FindJob', {
+    fetch(process.env.REACT_APP_BASE_URL+'/FindJob', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({filterCategory,filterLocation})
@@ -80,7 +80,6 @@ if(filterCategory!="All Category" && filterLocation!="All Location"){
     
       setSearch(false)
     }
-console.log(allJobsFilter)
 
 }
 ,[search])
@@ -135,11 +134,12 @@ console.log(allJobsFilter)
 
           </div>
         </header>
+        {console.log("JOBS",allJobsFilter)}
       </div>
       {allJobsFilter.map((item,index)=>{
       
         return(
-      <JobCard key={index} jobTitle={item.jobTitle} location={item.jobLocation} typeofWork={item.jobType} timing={item.jobTimings} />
+      <JobCard key={index} jobTitle={item.jobTitle} jobLocation={item.jobLocation} jobType={item.jobType} jobTimings={item.jobTimings} jobSalary={item.jobSalary} />
         )}
       )}
 

@@ -73,7 +73,7 @@ const NavBar = (props) => {
     return (
         <Navbar sticky='top' collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container fluid>
-                <Navbar.Brand href="#home">
+                <Navbar.Brand href="/">
                     <img width={60} height={50} src={JobLogo} alt="" />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -113,9 +113,11 @@ const NavBar = (props) => {
                             <Row style={{ textAlign: "center", marginTop: "10%" }}>
                                 <Col>
                                     <button onClick={() => {
-                                        props.changeisuser({})
+                                        props.changeisuser({email:"anonymous@gmail.com"})
                                         window.localStorage.clear()
-                                        window.location.reload("/")
+                                        // setTimeout(()=>{
+                                        //     window.location.reload("/")
+                                        // },2000)
                                     }
                                     } style={{ borderRadius: "5px" }} className="IconButton"> YES </button>
                                 </Col>

@@ -25,7 +25,7 @@ function Category() {
       },[width])
 
       useEffect(()=>{
-        fetch('http://localhost:8001/JobsAccToCategory', {
+        fetch(process.env.REACT_APP_BASE_URL+'/JobsAccToCategory', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({jobCategory:params.id})

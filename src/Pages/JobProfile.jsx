@@ -75,7 +75,7 @@ function Profile(props) {
   }, [])
 
   function getProfile() {
-    fetch('http://localhost:8001/UserProfile', {
+    fetch(process.env.REACT_APP_BASE_URL+'/UserProfile', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: userInfo.email })
@@ -106,7 +106,7 @@ function Profile(props) {
 
   function updateChanges() {
     console.log("SKILLS",skills)
-    fetch('http://localhost:8001/EditProfile', {
+    fetch(process.env.REACT_APP_BASE_URL+'/EditProfile', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, name, age, experience, skills, cnic, about, location, education, phoneNo, yearsOfExperience })
@@ -155,11 +155,10 @@ function Profile(props) {
           </Row>
 
           <Row>
-            <Col sm={4}>
-              <h5 style={{ color: "#142050", fontWeight: "bold", marginBottom: "15px" }}>SKILLS</h5>
-            </Col>
-            <Col sm={4}>
-              <BiMessageRoundedAdd onClick={() => setAddSkill(!addSkill)} color='#ff9902' size={30} style={{ marginLeft: "-20%", cursor: "pointer" }} />
+            <Col >
+              <h5 style={{ color: "#142050", fontWeight: "bold", marginBottom: "15px" }}>SKILLS 
+              <BiMessageRoundedAdd onClick={() => setAddSkill(!addSkill)} color='#ff9902' size={30} style={{  cursor: "pointer",marginLeft:"5%" }} />
+              </h5>
             </Col>
           </Row>
 
@@ -196,11 +195,10 @@ function Profile(props) {
           </Row>
         </Col>
 
-        <Col sm={1}>
-        </Col>
+     
 
 
-        <Col sm={5}>
+        <Col sm={5} style={{margin:"5%"}}>
           <Row style={{ marginBottom: "20px", }}>
             <h5 className='JobProfile-heading'>BASIC INFORMATION</h5>
           </Row>
@@ -276,11 +274,10 @@ function Profile(props) {
           </Row>
 
           <Row>
-            <Col sm={4}>
-              <h5 className='JobProfile-heading'>EXPERIENCE</h5>
-            </Col>
-            <Col sm={4}>
-              <BiMessageRoundedAdd onClick={() => setAddExperience(!addExperience)} color='#ff9902' size={30} style={{ marginTop: "16%", marginLeft: "-10%", cursor: "pointer" }} />
+            <Col  >
+              <h5 className='JobProfile-heading'>EXPERIENCE
+              <BiMessageRoundedAdd onClick={() => setAddExperience(!addExperience)} color='#ff9902' size={30} style={{  cursor: "pointer",marginLeft:"5%" }} />
+              </h5>
             </Col>
           </Row>
           <Row>

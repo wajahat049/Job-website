@@ -79,7 +79,7 @@ const JobPost = () => {
                 })
             };
             // setShow(true)
-            fetch('http://localhost:8001/PostJob', requestOptions)
+            fetch(process.env.REACT_APP_BASE_URL+'/PostJob', requestOptions)
                 .then(response => response.json())
                 .then(data => console.log(data));
         }
