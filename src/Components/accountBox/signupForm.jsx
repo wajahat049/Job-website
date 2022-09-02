@@ -46,6 +46,9 @@ const save=(data)=>{
   setMsg(data.message)
   setvariant(data.variant)
   setOpen(true)
+  setName("")
+  setEmail("")
+  setPass("")
 
 
 }

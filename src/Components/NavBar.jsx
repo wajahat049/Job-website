@@ -115,6 +115,7 @@ const NavBar = (props) => {
                                     <button onClick={() => {
                                         props.changeisuser({email:"anonymous@gmail.com"})
                                         window.localStorage.clear()
+                                        history.push("/")
                                         // setTimeout(()=>{
                                         //     window.location.reload("/")
                                         // },2000)

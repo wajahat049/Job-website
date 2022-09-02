@@ -49,10 +49,12 @@ const save=(data)=>{
   setvariant(data.variant)
   setOpen(true)
   if(data.message == "Successfully Login"){
+    setEmail("")
+    setPass("")
     setTimeout(()=>{
     props.changeisuser({email,pass})
 
-    },[2000])
+    },[1000])
     // localStorage.setItem("USER",JSON.stringify({email,pass}))
   }
 
